@@ -14,3 +14,6 @@ class Solution:
                     col[c].add(board[r][c])
                     sqr[(r//3,c//3)].add(board[r][c])
         return True
+
+        #TC O((^2))
+        #SC O((^2))
