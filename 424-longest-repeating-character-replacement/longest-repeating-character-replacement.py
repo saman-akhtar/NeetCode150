@@ -20,7 +20,7 @@ class Solution:
         return res
 
 #        Time Complexity: O(N)
-# Space Complexity: O(1) (if character set is fixed, like English alphabet), otherwise O(C) where C is the number of distinct characters.
+#        Space Complexity: O(1) (if character set is fixed, like English alphabet), otherwise O(C) where C is the number of distinct characters.
 
         # Approch 2
         # count = {}
