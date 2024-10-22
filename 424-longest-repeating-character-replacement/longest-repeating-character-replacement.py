@@ -8,6 +8,7 @@ class Solution:
         #O(N)
         for r in range(len(s)):
             count[s[r]] = 1 + count.get(s[r], 0)
+            #Optimization
             maxf = max(maxf,  count[s[r]])
             
             # while not valid 
@@ -18,8 +19,8 @@ class Solution:
             res = max(r-l +1,res)
         return res
 
-        #TC
-        #SC 
+#        Time Complexity: O(N)
+# Space Complexity: O(1) (if character set is fixed, like English alphabet), otherwise O(C) where C is the number of distinct characters.
 
         # Approch 2
         # count = {}
