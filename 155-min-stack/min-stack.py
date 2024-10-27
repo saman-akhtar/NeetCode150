@@ -20,7 +20,7 @@ class MinStack:
                 else:
                     self.min = float("infinity")
         else:
-            print("wrong no")
+            print("wrong operation")
 
         
 
@@ -29,7 +29,7 @@ class MinStack:
         if le > 0:
             return self.stack[le-1]
         
-        print("wrong no")
+        print("wrong operation")
         return []
         
 
