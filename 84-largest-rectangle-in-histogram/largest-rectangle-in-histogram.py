@@ -20,3 +20,5 @@ class Solution:
             max_area = max(max_area, h * width)  # Update the maximum area
 
         return max_area
+# TC ON
+# SC: ON
