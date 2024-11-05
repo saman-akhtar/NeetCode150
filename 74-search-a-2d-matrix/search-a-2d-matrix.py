@@ -34,3 +34,37 @@ class Solution:
                 r = m - 1
         
         return False
+
+   # Time Complexity: 
+# \U0001d442
+# (
+# log
+# ⁡
+# \U0001d45a
+# +
+# log
+# ⁡
+# \U0001d45b
+# )
+# =
+# \U0001d442
+# (
+# log
+# ⁡
+# (
+# \U0001d45a
+# ×
+# \U0001d45b
+# )
+# )
+# O(logm+logn)=O(log(m×n)), where 
+# \U0001d45a
+# m is the number of rows and 
+# \U0001d45b
+# n is the number of columns.
+# Space Complexity: 
+# \U0001d442
+# (
+# 1
+# )
+# O(1), as we are using a constant amount of space.
