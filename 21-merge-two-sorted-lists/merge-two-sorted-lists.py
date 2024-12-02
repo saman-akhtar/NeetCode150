@@ -20,3 +20,6 @@ class Solution:
         if list2:
             head.next = list2
         return dummy.next
+
+# TC O(n + m)
+# SC O(1)
