@@ -20,4 +20,32 @@ class Solution:
         
         calculate(root)
         return res
-        
+#Time Complexity: 
+# \U0001d442
+# (
+# \U0001d45b
+# )
+# O(n), where 
+# \U0001d45b
+# n is the number of nodes
+#
+#Space Complexity: 
+# \U0001d442
+# (
+# ℎ
+# )
+# O(h), where 
+# ℎ
+# h is the height of the tree.
+# \U0001d442
+# (
+# log
+# ⁡
+# \U0001d45b
+# )
+# O(logn) for a balanced tree.
+# \U0001d442
+# (
+# \U0001d45b
+# )
+# O(n) for a degenerate tree.
