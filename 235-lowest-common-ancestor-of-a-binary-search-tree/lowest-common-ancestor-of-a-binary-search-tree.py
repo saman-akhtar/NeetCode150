@@ -15,4 +15,6 @@ class Solution:
                 cur = cur.right
             else:
                 return cur
-        
+# TC O Log n
+# Space complexity: 
+# O(1)      
