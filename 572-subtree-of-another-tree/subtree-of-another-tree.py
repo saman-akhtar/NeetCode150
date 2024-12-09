@@ -24,4 +24,9 @@ class Solution:
             return l and r
         return False
 
+    # TC for each node, check subroot node
+    # O (N * m)
+
+    # SC : O(N + M)
+
         
