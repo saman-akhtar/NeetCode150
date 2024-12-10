@@ -25,7 +25,8 @@ class Solution:
             res.append(node.val)
         
         return res
-
+# TC ON
+# SC ON
 
         #approach 1
     # def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
