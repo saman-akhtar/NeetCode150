@@ -18,8 +18,8 @@ class Solution:
         root.right = self.buildTree(preorder[mid+1:], inorder[mid+1: ])
         return root
 
-#TC O(N)
-# SC O(N) : recursive stack
+# Time complexity: O(n ^2)
+# Space complexity: O(n ^2)
         
         # 3 9 1 2 20 15 7 PRE
         # 1 9 2 3 15 20 7 IN
