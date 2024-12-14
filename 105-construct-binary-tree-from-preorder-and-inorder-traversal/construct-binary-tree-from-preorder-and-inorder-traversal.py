@@ -43,7 +43,51 @@ class Solution:
 # 1 Recursive Stack Space:
 # The recursion depth depends on the height of the binary tree.
 # In the worst case (a skewed tree), the recursion depth will be O(n).
+# 2 Subarrays in Recursive Calls:
 # Subarrays in Recursive Calls:
+
+# At each recursive call, you create new subarrays (preorder[1:mid+1], inorder[:mid], etc.).
+# These subarrays are slices of the input arrays, which involve copying elements.
+# The total space used by subarray slicing across all recursive calls is proportional to the sum of the lengths of all these slices:
+# \U0001d45b
+# +
+# (
+# \U0001d45b
+# −
+# 1
+# )
+# +
+# (
+# \U0001d45b
+# −
+# 2
+# )
+# +
+# ⋯
+# +
+# 1
+# =
+# \U0001d45b
+# (
+# \U0001d45b
+# +
+# 1
+# )
+# 2
+# =
+# \U0001d442
+# (
+# \U0001d45b
+# 2
+# )
+# n+(n−1)+(n−2)+⋯+1= 
+# 2
+# n(n+1)
+# ​
+#  =O(n 
+# 2
+#  )
+
 
         
         # 3 9 1 2 20 15 7 PRE
