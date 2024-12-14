@@ -28,7 +28,23 @@ class Solution:
         return root
 
 # Time complexity: O(n ^2)
+# Recursion Tree:
+
+# The tree has 
+# \U0001d442
+# (\U0001d45b)
+# O(n) nodes (one recursive call per node).
+# At each node, the cost of inorder.index() is 
+# \U0001d442(\U0001d45b)
+# O(n).
+# Thus, the total time complexity is:
+# O(n ^2)
 # Space complexity: O(n ^2)
+# 1 Recursive Stack Space:
+# The recursion depth depends on the height of the binary tree.
+# In the worst case (a skewed tree), the recursion depth will be O(n).
+# Subarrays in Recursive Calls:
+
         
         # 3 9 1 2 20 15 7 PRE
         # 1 9 2 3 15 20 7 IN
