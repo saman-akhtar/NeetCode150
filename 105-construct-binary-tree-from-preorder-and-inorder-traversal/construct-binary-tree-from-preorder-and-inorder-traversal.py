@@ -5,7 +5,16 @@
 #         self.left = left
 #         self.right = right
 
-#clarifying question ? will it contain unique value ??
+#clarifying question 
+# Does the input contain unique values?
+
+# If the values in preorder and inorder are not unique, the inorder.index() operation could result in ambiguity about subtree boundaries. For the algorithm to work, values must be unique.
+
+# If not unique, modifications like passing index maps of values to positions in inorder could solve it. But as is, assume values are unique.
+
+# Are preorder and inorder valid?
+
+# The function assumes preorder and inorder correspond to a valid binary tree. If this constraint isn't met, the tree construction won't be meaningful.
 
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:     
