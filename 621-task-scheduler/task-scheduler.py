@@ -25,8 +25,11 @@ class Solution:
 # \U0001d458
 # k is the number of unique tasks. Each heap operation takes 
 # O(logk).
+# but k = 26, O(log26 * T
+# so TC = O(T)
 # SC O(k) for the heap and 
 
 # O(k) for the cooldown queue, where 
 # \U0001d458
 # k is the number of unique tasks.
+# but k = 26, O(1)
