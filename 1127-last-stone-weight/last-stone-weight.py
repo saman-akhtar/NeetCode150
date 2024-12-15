@@ -5,7 +5,6 @@ class Solution:
         while len(stones) > 1:
             y = heapq.heappop(stones)
             x = heapq.heappop(stones)
-            # x = 0
             if ( x != y):
                 heapq.heappush(stones, ((y-x)))
             
