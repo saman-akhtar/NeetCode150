@@ -1,9 +1,7 @@
 class Solution:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
-        # d = []
-        # for i in points:
-        #     sqrt(i[0] **2 + i[1] **2)
-        d = [(-1 *sqrt(i[0] **2 + i[1] **2), i) for i in points]
+        
+        d = [(-1 *(i[0] **2 + i[1] **2), i) for i in points]
         
         heapq.heapify(d)
         res = []
