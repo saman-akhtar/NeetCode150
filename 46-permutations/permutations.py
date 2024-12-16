@@ -19,4 +19,12 @@ class Solution:
                 res.append(p_copy)
         return res
 
-        return res
+#   Time complexity: 
+
+# )
+# O(n!∗n 
+# 2
+#  )
+# Space complexity: 
+
+# O(n!∗n)
