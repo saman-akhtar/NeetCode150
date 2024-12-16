@@ -36,7 +36,13 @@ class Twitter:
                 count, tweetId = self.tweetMap[followeeId][index]
                 heapq.heappush(minHeap, [count, tweetId, followeeId, index -1 ])
         return res
-
+    # TC :F is no of followr heapify = O(F), heapush heapop run 10 times
+    # 10.logF
+    # O(F+logF)=O(F⋅logF)
+    #The heap can store at most 
+#SC
+# F elements (one tweet per followee), so 
+# O(F).
 
 
 
