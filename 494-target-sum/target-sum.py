@@ -12,6 +12,11 @@ class Solution:
             return dpfunc(i,total)
         return dpfunc(0,0)
             
+# TC n * t
+# SC O( N * T)Where 
+# n is the length of the array 
+# nums and t is the sum of all the elements in the array.
+
 
         # # APPROACH 1
 
