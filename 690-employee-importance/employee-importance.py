@@ -12,9 +12,10 @@ class Solution:
         total = 0
         q = deque()
         empMap = {}
-        def bfs(emp):
+        #O(E +V)
+        def bfs(d):
             nonlocal total
-            q.append(emp)
+            q.append(empMap[d])
             while q:
                 node = q.popleft()
                 if(node):
@@ -23,14 +24,15 @@ class Solution:
                     for i in sub:
                         q.append(empMap[i])
                     
-        
+        # O(V)
         for emp in employees:
             empMap[emp.id] = emp
                 
-        bfs(empMap[id])
+        bfs(id)
         return total
 
-
+# TC O(V + E)
+# SC: BFS & empMap =>. O(V).
 
 
 # clarying willdata be given of 2 org?
