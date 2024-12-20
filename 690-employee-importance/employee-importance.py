@@ -17,7 +17,6 @@ class Solution:
             q.append(emp)
             while q:
                 node = q.popleft()
-                print("node", node)
                 if(node):
                     i, imp, sub = node.id, node.importance, node.subordinates
                     total += imp
