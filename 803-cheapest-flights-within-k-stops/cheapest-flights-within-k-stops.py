@@ -1,36 +1,39 @@
-from collections import defaultdict, deque
 from typing import List
-import heapq
 
 class Solution:
     def findCheapestPrice(self, n: int, flights: List[List[int]], src: int, dst: int, k: int) -> int:
-        # Build adjacency list
-        graph = defaultdict(list)
-        for s, d, price in flights:
-            graph[s].append((d, price))
+        # Step 1: Create the adjacency list for the graph
+        adj = {i: [] for i in range(n)}
+        for u, v, cost in flights:
+            adj[u].append((v, cost))
         
-        # Priority queue (min-heap) to store (cost, current_node, stops_left)
-        heap = [(0, src, k + 1)]
-        
-        # Visited dictionary to track minimum costs with remaining stops
-        visited = {}
+        # Step 2: Set up DFS with memoization
+        # Memoization will store the result of the cheapest cost for each (node, stops)
+        memo = {}
 
-        while heap:
-            cost, node, stops = heapq.heappop(heap)
-
-            # If we reach the destination, return the cost
+        def dfs(node, stops):
+            # If we reach the destination, return the cost 0
             if node == dst:
-                return cost
+                return 0
+            # If we've exceeded k stops, return infinity to prune
+            if stops > k:
+                return float('inf')
+            if (node, stops) in memo:
+                return memo[(node, stops)]
             
-            # If we have stops left, explore neighbors
-            if stops > 0:
-                for neighbor, price in graph[node]:
-                    new_cost = cost + price
-
-                    # Only add to the heap if this path has better cost or more stops left
-                    if (neighbor, stops - 1) not in visited or visited[(neighbor, stops - 1)] > new_cost:
-                        visited[(neighbor, stops - 1)] = new_cost
-                        heapq.heappush(heap, (new_cost, neighbor, stops - 1))
+            # Step 3: Explore all neighboring nodes and accumulate the cost
+            min_cost = float('inf')
+            for neighbor, cost in adj[node]:
+                next_cost = dfs(neighbor, stops + 1)
+                if next_cost != float('inf'):
+                    min_cost = min(min_cost, cost + next_cost)
+            
+            # Memoize and return the minimum cost found
+            memo[(node, stops)] = min_cost
+            return min_cost
         
-        # If no valid path is found
-        return -1
+        # Step 4: Start DFS from the src node
+        result = dfs(src, 0)
+        
+        # Step 5: If result is still infinity, it means no valid path was found
+        return result if result != float('inf') else -1
