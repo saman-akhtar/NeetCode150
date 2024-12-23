@@ -7,11 +7,7 @@ class Solution:
             else:
                 if(stack):
                     old_bracket = stack.pop()
-                    if( bracket == ")" and old_bracket == "("):
-                        continue
-                    if( bracket == "}" and old_bracket == "{"):
-                        continue
-                    if( bracket == "]" and old_bracket == "["):
+                    if( bracket == ")" and old_bracket == "(" or bracket == "}" and old_bracket == "{" or  bracket == "]" and old_bracket == "["):
                         continue
                     return False
                 else:
