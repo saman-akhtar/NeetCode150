@@ -11,5 +11,6 @@ class Solution:
                 domain_map[subdomain] = domain_map.get(subdomain, 0) + count
         
         return [f"{count} {domain}" for domain, count in domain_map.items()]
-# TC O (3n) + O(nm)
-# SC O(n * m)
+# TC O (n* k * m) + O(nm) where m = 3, k is avrage leng of domain
+# TC O(nk)
+# SC O(n * m) where m = 3 => O(NM)
