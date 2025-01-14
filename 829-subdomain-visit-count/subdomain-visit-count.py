@@ -3,14 +3,13 @@ class Solution:
         domain_map = {}
         for cp in cpdomains:
             count, domain = cp.split(" ")
+            count = int(count)
             domains = domain.split(".")
-            domain_map[domain] = domain_map.get(domain,0) + int(count)
-            # for domain in domains[1:]:
-            if(len(domains) == 3):
-                domain = domains[1] + "." + domains[2]
-                domain_map[domain] = domain_map.get(domain,0) + int(count)
-            domain = domains[-1]
-            domain_map[domain] = domain_map.get(domain,0) + int(count)
+             # Iterate through the subdomains, starting from the full domain
+            for i in range(len(domains)):
+                subdomain = ".".join(domains[i:])
+                domain_map[subdomain] = domain_map.get(subdomain, 0) + count
         
-        array_of_lists = [ str(value) + " "+ key for key, value in domain_map.items()] 
-        return array_of_lists
+        return [f"{count} {domain}" for domain, count in domain_map.items()]
+# TC O (3n) + O(nm)
+# SC O(n * m)
