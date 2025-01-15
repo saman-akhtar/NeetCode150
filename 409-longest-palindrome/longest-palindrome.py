@@ -1,8 +1,6 @@
 class Solution:
     def longestPalindrome(self, s: str) -> int:
         letter = Counter(s)
-        # for i in s:
-            # letter[i] = letter.get(i,0) + 1
         count = 0
         odd_found = False
         for v in letter.values():
