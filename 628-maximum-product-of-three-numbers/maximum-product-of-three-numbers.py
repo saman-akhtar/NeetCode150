@@ -23,6 +23,8 @@ class Solution:
                 min2 = num
         return max(min1 * min2 * max1, max1* max2* max3)
                  
+# TC O(N)
+# SC O(1)
 
 # Tes case all pso9v top 3
 # all negavtive top3 
