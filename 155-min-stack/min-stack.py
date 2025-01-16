@@ -31,7 +31,8 @@ class MinStack:
         if self.stack:
             return self.minStack[-1]
         
-
+# TC O(1) for each operation
+# SC Total Space Complexity: O(n)+O(n)=O(n).
 
 # Your MinStack object will be instantiated and called as such:
 # obj = MinStack()
