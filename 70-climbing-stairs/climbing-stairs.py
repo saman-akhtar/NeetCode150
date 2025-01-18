@@ -26,3 +26,7 @@ class Solution:
             prev1 = prev2
             prev2 = cur
         return prev2
+    # TC O(n)
+    # SC O(1)
+
+    #recir app :Time Complexity: O(2 ^n)
