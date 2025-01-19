@@ -21,4 +21,12 @@ class Solution:
         backtrack(n,0)
         return res
 
+
+# TC no of valid ways * no of time
+# TC= O (4^n) * O(N)
+
+# SC
+#  recursiv stack of func + space to store data
+# O(n) + 4^n combon & each tale O(n) stack used
+# O(4^n +n)
         
