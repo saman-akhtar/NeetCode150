@@ -19,11 +19,7 @@ class Solution:
                 return 
             val = digitMap[digits[i]]
             for v in val:
-                # curStr += v
                 backtrack(i + 1, curStr + v)
-                # curStr = 
-
-
             
         backtrack(0, "")
         return res
