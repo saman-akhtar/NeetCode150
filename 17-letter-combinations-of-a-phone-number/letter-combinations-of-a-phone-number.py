@@ -1,7 +1,6 @@
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
-        if digits == "":
-            return []
+        
         res = []
         digitMap = {
         "2": ["a", "b", "c"],
@@ -21,5 +20,6 @@ class Solution:
             for v in val:
                 backtrack(i + 1, curStr + v)
             
-        backtrack(0, "")
+        if digits:  # Only start backtracking if digits is not empty
+            backtrack(0, "")
         return res
