@@ -16,5 +16,6 @@ class Solution:
                 sqr[(r//3,c//3)].add(board[r][c])
         return True
 
-
+# TC O(9^2)
+# SC O(9^2)
         
