@@ -1,15 +1,26 @@
 class Solution:
-
-    # will interval sorted?
-    # will overlap of 1st takeover? [[1,4],[2,3]]? edge case
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        intervals.sort()
-        res = [intervals[0]]
-        for i in range(1,len(intervals) ):
-            if(res[-1][1] >= intervals[i][0]):
-                end = max(res[-1][1], intervals[i][1])
-                res[-1]= [res[-1][0], end]
+
+        #CLARYIFNg : is it sorted
+        intervals.sort(key= lambda x : x[0])
+        res = []
+        # for i in range(len(intervals)-1):
+        i = 0
+        while i < len(intervals): 
+            if i == len(intervals)-1:
+                # res.append(intervals[i])
+                break
+            end_cur = intervals[i][1]
+            start_next = intervals[i+ 1][0]
+            if ( end_cur >= start_next):
+                intervals[i][1] = max(end_cur,intervals[i+ 1][1])
+                del intervals[i+1]
+                # res.append([intervals[i][0],max(end_cur,intervals[i+ 1][1])])
+                # i += 1
             else:
-                res.append(intervals[i])
-        return res
+                # res.append(intervals[i])
+                i += 1
+        return intervals
+
+
         
