@@ -61,7 +61,7 @@ class Solution:
         # # Start recursion with the last coin and the full amount
         # min_len = dp(n - 1, amount)
         # return -1 if min_len == float('inf') else min_len
-            # TC s:O(2 ^n)
+            # TC s:O(2^(n + m))    
             # SC  o(M)
 
 
