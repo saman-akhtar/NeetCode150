@@ -4,6 +4,39 @@ class Solution:
 
         # go through each cell N2
         # how long is the arm O(N)
+        # # Step 1: Initialize the grid with 1s
+        # grid = [[1] * n for _ in range(n)]
+        
+        # # Step 2: Mark all cells in mines as 0
+        # for r, c in mines:
+        #     grid[r][c] = 0
+        
+        # # Step 3: Initialize the maximum order
+        # max_order = 0
+        
+        # # Step 4: Brute-force to compute the largest plus sign for every cell
+        # for i in range(n):
+        #     for j in range(n):
+        #         if grid[i][j] == 0:
+        #             continue  # Skip if the cell is part of a mine
+                
+        #         # Check the size of the plus sign centered at (i, j)
+        #         order = 0
+        #         while (
+        #             i - order >= 0 and i + order < n and
+        #             j - order >= 0 and j + order < n and
+        #             grid[i - order][j] == 1 and
+        #             grid[i + order][j] == 1 and
+        #             grid[i][j - order] == 1 and
+        #             grid[i][j + order] == 1
+        #         ):
+        #             order += 1
+                
+        #         # Update the maximum order found so far
+        #         max_order = max(max_order, order)
+        
+        # return max_order
+
 
         #APPRACH 2
         # we can optimze the pat how long is cell
