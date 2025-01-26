@@ -26,8 +26,6 @@ class Solution:
         
         n = len(nums)
         nw = findTarget(n-1, new_target)
-        print("nw",nw)
-        print("miem",memo)
         return nw
 
 
