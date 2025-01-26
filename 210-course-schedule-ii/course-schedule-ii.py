@@ -17,9 +17,9 @@ class Solution:
             if crs in visited:
                 return True
             visited.add(crs)
-            if preMap[crs] == []:
-                order.append(crs)
-                return True
+            # if preMap[crs] == []:
+            #     order.append(crs)
+            #     return True
             cycle.add(crs)
             
             
