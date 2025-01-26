@@ -17,17 +17,11 @@ class Solution:
             if crs in visited:
                 return True
             visited.add(crs)
-            # if preMap[crs] == []:
-            #     order.append(crs)
-            #     return True
             cycle.add(crs)
             
-            
-
             for c in preMap[crs]:
                 if not dfs(c):
                     return False
-            preMap[crs]= []
             order.append(crs)
             cycle.remove(crs)
             return True
