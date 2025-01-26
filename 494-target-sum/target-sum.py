@@ -1,16 +1,47 @@
 class Solution:
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
-        # # APPROACH 2
-        dp = {}
+        # bottom UP
+        memo = {}
+        total_sum = sum(nums)
+        if (total_sum + target) % 2 != 0 or total_sum < abs(target):
+            return 0
+        new_target = (total_sum + target) // 2
+        def findTarget(i, cur_sum):
+            
+            # if i == -1 and cur_sum == new_target:
+            #     return 1
+            if i == -1:
+                if cur_sum == 0:
+                    return 1
+                return 0
+            
+            if ( i, cur_sum) in memo:
+                return memo[(i,cur_sum)]
+            if nums[i] <= cur_sum:
+            
+                memo[(i,cur_sum)] = findTarget(i-1, cur_sum - nums[i])+ findTarget(i -1, cur_sum)
+            else:
+                memo[(i,cur_sum)] = findTarget(i -1, cur_sum )
+            return memo[(i,cur_sum)]
+        
+        n = len(nums)
+        nw = findTarget(n-1, new_target)
+        print("nw",nw)
+        print("miem",memo)
+        return nw
 
-        def dpfunc(i, total):
-            if i == len(nums):
-                return 1 if total == target else 0
-            if( (i,total ) in dp):
-                return dp[(i,total)]
-            dp[(i,total)] = dpfunc(i +1, total + nums[i]) + dpfunc(i +1, total - nums[i])
-            return dpfunc(i,total)
-        return dpfunc(0,0)
+
+        # # # APPROACH 2
+        # dp = {}
+
+        # def dpfunc(i, total):
+        #     if i == len(nums):
+        #         return 1 if total == target else 0
+        #     if( (i,total ) in dp):
+        #         return dp[(i,total)]
+        #     dp[(i,total)] = dpfunc(i +1, total + nums[i]) + dpfunc(i +1, total - nums[i])
+        #     return dpfunc(i,total)
+        # return dpfunc(0,0)
             
 # TC n * t
 # SC O( N * T)Where 
