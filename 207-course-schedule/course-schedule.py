@@ -32,7 +32,8 @@ class Solution:
         return True
 
 
-
+# TC O(c + p)
+# O(c +p) = premAp o(c), visit O(N)
 
 
         
