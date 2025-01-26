@@ -37,28 +37,32 @@ class Solution:
 
 
        # Approach 1
-    #    self.minmt = float('inf')
-    #     def findMin(i, no ,amt):
-            
-    #         if i == len(coins):
-    #             return self.minmt
-            
-    #         if amt >  amount:
-    #             return self.minmt
-    #         if amt == amount:
-    #             self.minmt = min(self.minmt,no)
-    #             return self.minmt
-    #         inc = float('inf')
-    #         if ( i < len(coins)):
-    #             inc = findMin (i , no + 1, amt + coins[i])
-            
-    #         exc = findMin (i + 1 , no , amt )
+    #    def coinChange(self, coins: List[int], amount: int) -> int:
+        # n = len(coins)
 
-    #         return min( inc, exc)
-    #     self.minmt = findMin( 0 , 0, 0)
-    #     return -1 if self.minmt == float('inf') else self.minmt
+        # def dp(i, amt):
+        #     # Base cases
+        #     if i < 0 or amt < 0:  # No more coins or invalid amount
+        #         return float('inf')
+        #     if amt == 0:  # Exact amount achieved
+        #         return 0
+
+        #     # Recursive cases
+        #     if coins[i] <= amt:
+        #         # Include the current coin
+        #         inc = 1 + dp(i, amt - coins[i])
+        #         # Exclude the current coin
+        #         exc = dp(i - 1, amt)
+        #         return min(inc, exc)
+        #     else:
+        #         # Exclude the current coin
+        #         return dp(i - 1, amt)
+
+        # # Start recursion with the last coin and the full amount
+        # min_len = dp(n - 1, amount)
+        # return -1 if min_len == float('inf') else min_len
             # TC s:O(2 ^n)
-            # SC 
+            # SC  o(M)
 
 
         
