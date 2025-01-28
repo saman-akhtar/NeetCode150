@@ -19,7 +19,8 @@ class Solution:
             memo[s] = False
             return False
         return canBreak(s)
-
+    # TC O(k.n)
+    # SC O(n)
 
         # APPROACH 1
         # def canBreak(s):
