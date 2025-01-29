@@ -24,3 +24,8 @@ class Solution:
 
         # **Find all cells that can reach both oceans**
         return list(pac & atl)
+
+        # TC O(m×n)
+        # SC O(m×n)
+
+        # BRIUET force on eac cell = O(m ^ 2×n ^ 2)
