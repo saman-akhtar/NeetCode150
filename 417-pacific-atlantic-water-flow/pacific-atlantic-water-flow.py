@@ -5,7 +5,7 @@ class Solution:
         atl = set()
 
         def dfs(r, c, visit, prevH):
-            if ((r, c) in visit or r < 0 or c < 0 or r >= ROWS or c >= COLS or heights[r][c] < prevH):
+            if ((r, c) in visit or r not in range(ROWS) or c not in range(COLS)  or heights[r][c] < prevH):
                 return
             
             visit.add((r, c))  # **Fix: Mark as visited before exploring further**
