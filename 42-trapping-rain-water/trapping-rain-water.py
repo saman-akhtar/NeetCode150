@@ -22,6 +22,12 @@ class Solution:
                 maxr = max(maxr, height[r])
 
         return water
+        # TC O(N)
+        # SC O(1)
+
+        # here trick is assignimnet of maxl & maxr.. should be value of height array 0 & last
+        # hence in loop firts either inc l or decrease r 
+        # then calculate maxl & maxr
 
 
         # APPROACH 1
