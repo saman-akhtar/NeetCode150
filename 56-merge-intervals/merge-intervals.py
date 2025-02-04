@@ -1,7 +1,9 @@
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        # O(N logN)
         intervals.sort(key= lambda x:x[0])
         res = [intervals[0]]
+        # ON
         for i in range(1,len(intervals)):
             cur_int = intervals[i]
             if(cur_int[0] <= res[-1][1]):
@@ -11,6 +13,6 @@ class Solution:
 
         return res
 
-        # TC 
-        # SC
+        # TC O(N Log N)
+        # SC O(N)
         
