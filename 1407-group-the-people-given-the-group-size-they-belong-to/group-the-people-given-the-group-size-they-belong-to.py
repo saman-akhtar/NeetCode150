@@ -12,6 +12,8 @@ class Solution:
                 groupMap[size] = []
         
         return res
+        # TC O(N)
+        # SC O(N)
 
 
         # n = len(groupSizes)
