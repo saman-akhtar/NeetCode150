@@ -25,42 +25,54 @@ class Solution:
         # else:
         #     return max(maxLen,self.longestSubstring(s[l:], k))
 
-        def helper(left, right):
-            if right - left < k:
-                return 0
+        # def helper(left, right):
+        #     if right - left < k:
+        #         return 0
             
-            chMap = Counter(s[left:right])
-            for mid in range(left, right):
-                if chMap[s[mid]] > 0 and chMap[s[mid]] < k:
-                    return max(helper(left, mid), helper(mid + 1, right))
+        #     chMap = Counter(s[left:right])
+        #     for mid in range(left, right):
+        #         if chMap[s[mid]] > 0 and chMap[s[mid]] < k:
+        #             return max(helper(left, mid), helper(mid + 1, right))
                     
-            return right - left
+        #     return right - left
         
-        return helper(0, len(s))
+        # return helper(0, len(s))
 #         Time Complexity	O(N log N)	O(N log N)
 # Space Complexity	O(N) (due to slicing)	O(N) (due to Counter, but no slicing overhead)
 
-        # while l <= r:
-        #     # r += 1
-        #     if (r < len(s) ):
-        #         if (s[r] in wordMap):
-        #             wordMap[s[r]] =  wordMap[s[r]] + 1
-        #             if( wordMap[s[r]] % k == 0):
-        #                 have += 1
-        #         else:
-        #             wordMap[s[r]] =1
-        #             need += 1
-        #             if (wordMap[s[r]] == k):
-        #                 have += 1
-        #         r += 1
-        #     if have == need:
-        #         length = r - l
-        #         maxLen =max(have,length)
-
-        #     r- l
-        #     l che k
-        # return maxLen
-
-# cabbc
-# abbcabbc
+        maxLen = 0
+        # Try to find valid substrings with exactly `uniqueTarget` unique characters
+        for uniqueTarget in range(1, 27):  # Since there are at most 26 letters
+            wordMap = {}
+            l = r = 0
+            have = 0  # Count of characters occurring at least `k` times
+            need = 0  # Count of unique characters in the window
+            
+            while r < len(s):
+                # Expand the window
+                if s[r] in wordMap:
+                    wordMap[s[r]] += 1
+                else:
+                    wordMap[s[r]] = 1
+                    need += 1  # New unique character added
+                
+                if wordMap[s[r]] == k:
+                    have += 1  # This character now meets the k requirement
+                
+                r += 1
+                
+                # Shrink the window if there are too many unique characters
+                while need > uniqueTarget:
+                    if wordMap[s[l]] == k:
+                        have -= 1  # This character no longer meets the k requirement
+                    wordMap[s[l]] -= 1
+                    if wordMap[s[l]] == 0:
+                        del wordMap[s[l]]
+                        need -= 1  # Remove a unique character
+                    l += 1
+                
+                # Update max length if all `need` characters meet the `k` condition
+                if have == need:
+                    maxLen = max(maxLen, r - l)
         
+        return maxLen
