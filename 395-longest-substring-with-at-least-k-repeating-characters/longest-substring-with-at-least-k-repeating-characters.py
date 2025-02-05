@@ -37,6 +37,8 @@ class Solution:
             return right - left
         
         return helper(0, len(s))
+#         Time Complexity	O(N log N)	O(N log N)
+# Space Complexity	O(N) (due to slicing)	O(N) (due to Counter, but no slicing overhead)
 
         # while l <= r:
         #     # r += 1
