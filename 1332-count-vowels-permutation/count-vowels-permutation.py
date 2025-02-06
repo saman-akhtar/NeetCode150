@@ -25,6 +25,32 @@ class Solution:
         return createVowel( 0, "")
          
 
+        # brute force
+    #     class Solution:
+    # def countVowelPermutation(self, n: int) -> int:
+    #     vowels = {'a': ['e'],'e':['a','i'],'i':['a','e','o','u'],'o':['i','u'],'u':['a']}
+    #     res = set()
+    #     self.count = 0
+    #     def createVowel( cur,prev):
+    #         if(cur and len(cur) ==n):
+    #             res.add(cur) # store permautatiom
+    #             self.count += 1
+    #             return 
+    #         for key, val in vowels.items():
+    #             if prev == "":
+    #                 createVowel( key ,key)
+    #             else:
+    #                 allowedVal = vowels[prev]
+    #                 for nextV in allowedVal:
+    #                     nw_str = cur + nextV
+    #                     if ( nw_str not in res):
+    #                         createVowel( nw_str ,nextV)
+    #         return
+
+
+    #     createVowel( "", "")
+    #     return self.count
+
         # TC (O(5ⁿ)) + strig concation is N ^2 => 5 vowel 5 branch is each leve
         # SC  (O(5ⁿ)):= for storing all combe , then string contin is O(N) &  call stack O(N)
 #         Component	Space Complexity
