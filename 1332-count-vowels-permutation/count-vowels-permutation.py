@@ -23,6 +23,9 @@ class Solution:
 
 
         return createVowel( 0, "")
+
+        # TC O(N * 5) = O(N)
+        # SC O(N * 5) = O(N)
          
 
         # brute force
