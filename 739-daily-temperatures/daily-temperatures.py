@@ -1,14 +1,31 @@
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
-        stack = []
-        # imp to intitialize
-        res = [0] * len(temperatures)
-        for i,temp in enumerate(temperatures):
-            while(stack and stack[-1][0] < temp):
-                prev_temp, prev_i = stack.pop()
-                # do not treat res as a stack , append answr in correct index
-                res[prev_i] = i - prev_i
-                
-            stack.append([temp,i])
+
+        # MONOTONIC stack
+        # ie it keeps growing in 1 direction
+        n = len(temperatures)
+        res = [0]* n
+        stack = [(temperatures[0], 0)]
+        for i in range (1, n):
+            
+            cur_temp = temperatures[i]
+            while  stack and temperatures[i] > stack[-1][0]:
+                old_temp, old_index = stack.pop()
+                res[old_index]= i - old_index
+                # cur_temp = old_temp
+                # cur_index = old_index
+
+            stack.append((temperatures[i], i))
+        # if stack:
+        #     print("stac",stack)
+        #     while ( stack ):
+        #         cur_temp, cur_index = stack.pop()
+        #         if( stack and cur_temp > stack[-1][0]):
+        #             prev_index =stack[-1][1]
+        #             res[prev_index]= cur_index - prev_index
         return res
-        
+
+
+        # TC O(N)
+        # SC O(N)
+        # 1 1 4 2 1 1 0 0
