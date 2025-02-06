@@ -40,6 +40,43 @@ class Solution:
 #         Time Complexity	O(N log N)	O(N log N)
 # Space Complexity	O(N) (due to slicing)	O(N) (due to Counter, but no slicing overhead)
 
+
+#In case there are multiple sequences with the same length that all satisfy the requirement, return the result as a sorted list of strings with alphabetical ascending order.
+# If there is no such sequence that each item was ordered at least k times, return an empty array D.
+# from collections import Counter
+
+# class Solution:
+#     def longestSubstring(self, s: str, k: int):
+#         self.maxLen = 0  # Track longest length found
+#         self.results = set()  # To store valid longest substrings
+
+        # def helper(left, right):
+        #     if right - left < k:
+        #         return 0
+
+        #     chMap = Counter(s[left:right])
+
+        #     # Find the first splitting point
+        #     for mid in range(left, right):
+        #         if chMap[s[mid]] > 0 and chMap[s[mid]] < k:
+        #             leftRes = helper(left, mid)
+        #             rightRes = helper(mid + 1, right)
+        #             return max(leftRes, rightRes)
+
+        #     # If valid, update maxLen and add to results
+        #     substring = s[left:right]
+        #     if len(substring) >= self.maxLen:
+        #         if len(substring) > self.maxLen:
+        #             self.results.clear()  # Reset if we found a longer substring
+        #         self.maxLen = len(substring)
+        #         self.results.add(substring)
+
+        #     return right - left
+
+        # helper(0, len(s))
+        # return sorted(self.results) if self.maxLen > 0 else []
+
+
         maxLen = 0
         # Try to find valid substrings with exactly `uniqueTarget` unique characters
         for uniqueTarget in range(1, 27):  # Since there are at most 26 letters
