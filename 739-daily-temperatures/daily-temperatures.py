@@ -29,4 +29,7 @@ class Solution:
 #         Result array (res) → O(N) (stores answers for each day).
 # Monotonic stack (stack) → Worst case O(N) (if temperatures are strictly decreasing, all elements go on the stack).
 # Other auxiliary variables → O(1), which is negligible.
+# currentl storing O(2N) as storing tuples
+# we can also stor only index to make it O(N)
+
         # 1 1 4 2 1 1 0 0
