@@ -12,20 +12,21 @@ class Solution:
             while  stack and temperatures[i] > stack[-1][0]:
                 old_temp, old_index = stack.pop()
                 res[old_index]= i - old_index
-                # cur_temp = old_temp
-                # cur_index = old_index
-
             stack.append((temperatures[i], i))
-        # if stack:
-        #     print("stac",stack)
-        #     while ( stack ):
-        #         cur_temp, cur_index = stack.pop()
-        #         if( stack and cur_temp > stack[-1][0]):
-        #             prev_index =stack[-1][1]
-        #             res[prev_index]= cur_index - prev_index
         return res
 
 
         # TC O(N)
+#          Time Complexity (TC) Analysis
+# Each temperature is processed once (loop iterates N times).
+# Each index is pushed onto the stack at most once (O(N)).
+# Each index is popped from the stack at most once (O(N)).
+# Thus, the worst-case scenario is that each element is pushed once and popped once, leading to:
+
+# O(N)
+
         # SC O(N)
+#         Result array (res) → O(N) (stores answers for each day).
+# Monotonic stack (stack) → Worst case O(N) (if temperatures are strictly decreasing, all elements go on the stack).
+# Other auxiliary variables → O(1), which is negligible.
         # 1 1 4 2 1 1 0 0
