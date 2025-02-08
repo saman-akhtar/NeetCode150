@@ -21,7 +21,8 @@ class Solution:
             else:
                 word += i
         return word
-
+# TC O(N)
+# SC O(N)
 
 #  "3[a2[c]]"
 #         c
