@@ -1,26 +1,45 @@
-class Solution(object):
-    def decodeString(self, s):
-        stack = []  # To store previous strings and their multipliers
-        num = 0  # To store the current number
-        temp = ""  # To store the current decoded string
-
+class Solution:
+    def decodeString(self, s: str) -> str:
+        stack =[]
+        word =""
+        num = 0
+        res = ""
         for i in s:
-            if i.isdigit():  # to handle multi-digit numbers
-                num = (num * 10) + int(i)
+            if i.isdigit():
+                num = num * 10 + int(i)
+            elif i == "[":
+                stack.append((word,num))
+                # reset
+                num = 0
+                word = ""
 
-            elif i == '[':  # Push the current string and multiplier onto the stack
-                stack.append((temp, num))
-                # Reset num and temp for the next segment
-                num = 0  
-                temp = ""  
 
-            elif i == ']':  # Pop from stack to decode the substring
-                string, nums = stack.pop()
-                temp = string + (temp * nums)  # Repeat the substring and concatenate
+            elif i == "]":
+                stored_str, store_num = stack.pop()
+                word = stored_str + word * store_num
 
-            else:  # Append alphabets to the current string
-                temp += i
+            else:
+                word += i
+        return word
 
-        return temp
 
+#  "3[a2[c]]"
+#         c
+#         a  2. acc
+#         "" 3
+
+
+#  "3[a]2[bc]"
+
+#         3abcbc
+#         bc    ].    3abcbc
+#         3a 2
+#         a     ].  3a
+#         "" 3
+
+         
         
+
+     
+
+
