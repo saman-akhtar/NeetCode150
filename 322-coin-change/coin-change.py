@@ -57,6 +57,9 @@ class Solution:
         return -1 if min_coins == float('inf') else min_coins
         # TC 2 ^ (n + amt)
         # SC recursive = O(amount)
+        # What is the maximum depth the recursion can go?
+        # In coin change, the deepest path is choosing the smallest coin repeatedly.
+        # Depth = amount in the worst case.
 
 
 
