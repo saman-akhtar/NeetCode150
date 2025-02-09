@@ -12,31 +12,56 @@ class Solution:
 #     4.  0
 #     5.  0
 # coins
-        memo = {}
 
-        def dp(i, cur_amt):
+
+        # boottom up 
+        # WHY?
+        # less space
+        # you build base case and then end result
+        n = len(coins)
+        dp = [[float(inf)]* (amount + 1) for _ in range(len(coins) + 1)]
+        # base case
+        
+        for i in range(n + 1):
+            dp[i][0] = 0  
+        for i in range(1,len(coins) + 1):
+            for j in range(1, (amount + 1)):
+                if (coins[i-1] <= j):
+                    dp[i][j]  = min(dp[i-1][j], 1 + dp[i][j- coins[i-1]])
+                else:
+                    dp[i][j] = dp[i-1][j]
+        return -1 if dp[n][amount] == float('inf') else dp[n][amount]
+        # TC =  O(n×amount)
+        # SC recursive = O(n×amount) only for string 2d
+       
+
+
+
+        # memo = {}
+
+        # def dp(i, cur_amt):
             
-            if cur_amt == 0 :
-                return 0
-            if i < 0:
-                return float('inf') 
-            if (i,cur_amt) in memo:
-                return memo[(i,cur_amt)]
-            exc = dp(i -1, cur_amt )
-            inc = float('inf') 
-            if coins[i] <= cur_amt:
-               inc = 1 + dp(i, cur_amt - coins[i])
-            # else:
-            min_coins = min(exc, inc)
-            memo[(i,cur_amt)] = min_coins
-            return memo[(i,cur_amt)]
+        #     if cur_amt == 0 :
+        #         return 0
+        #     if i < 0:
+        #         return float('inf') 
+        #     if (i,cur_amt) in memo:
+        #         return memo[(i,cur_amt)]
+        #     exc = dp(i -1, cur_amt )
+        #     inc = float('inf') 
+        #     if coins[i] <= cur_amt:
+        #        inc = 1 + dp(i, cur_amt - coins[i])
+        #     # else:
+        #     min_coins = min(exc, inc)
+        #     memo[(i,cur_amt)] = min_coins
+        #     return memo[(i,cur_amt)]
 
-        n = len(coins) - 1
-        min_coins = dp(n, amount)
-        return -1 if min_coins == float('inf') else min_coins
+        # n = len(coins) - 1
+        # min_coins = dp(n, amount)
+        # return -1 if min_coins == float('inf') else min_coins
         # TC o (n * amt)
-        # SC recursive = O(amount)
-
+        # SC recursive = O(n×amount)+O(amount) . O(amount becuasde of recusive sapce)
+        # TOP down ? u first fill end result in recursive pathe go to end of branch 
 
         def dp(i, cur_amt):
             
@@ -60,7 +85,7 @@ class Solution:
         # What is the maximum depth the recursion can go?
         # In coin change, the deepest path is choosing the smallest coin repeatedly.
         # Depth = amount in the worst case.
-
+        
 
 
 
