@@ -1,24 +1,50 @@
 class Solution:
     def largestRectangleArea(self, heights: List[int]) -> int:
-        stack = []  # To store (index, height)
-        max_area = 0  # To keep track of the maximum area
+        stack = []
+        maxArea = 0
+        for i, h in enumerate(heights):
+            start = i
+            while stack and stack[-1][0] >= h:
+                old_h,old_i = stack.pop()
+                area = old_h * (i -old_i)
+                maxArea = max(maxArea, area)
+                start = old_i
+            stack.append((h,start))
+        for  h, i in stack:
+            area = h * (len(heights) - i)
+            maxArea = max(maxArea, area)
+        return maxArea
 
-        # Iterate through each bar in the histogram
-        for i in range(len(heights)):
-            # While the stack is not empty and the current height is less than the height at the top of the stack
-            while stack and heights[stack[-1]] > heights[i]:
-                h = heights[stack.pop()]  # Height of the rectangle
-                width = i if not stack else i - stack[-1] - 1  # Calculate the width
-                max_area = max(max_area, h * width)  # Update the maximum area
 
-            stack.append(i)  # Push the current index onto the stack
 
-        # Process any remaining heights in the stack
-        while stack:
-            h = heights[stack.pop()]  # Height of the rectangle
-            width = len(heights) if not stack else len(heights) - stack[-1] - 1  # Calculate the width
-            max_area = max(max_area, h * width)  # Update the maximum area
 
-        return max_area
-# TC ON
-# SC: ON
+
+
+        # TC O(N)
+        # SC O(N)
+
+
+        # COmplute maxleft & maxright
+
+    #     maxA = 0
+
+    #     for i in range(len(heights)):
+    #         h = heights[i]
+    #         rightMost = i + 1
+    #         while rightMost < len(heights) and heights[rightMost] >= heights[i]:
+    #             rightMost += 1
+    #         leftMost = i -1 
+    #         while leftMost >=0 and heights[leftMost] >= heights[i]:
+    #             leftMost -= 1
+
+    #         maxA = max(maxA, heights[i] * (rightMost - leftMost -1))
+    #     return maxA
+
+    # # TC O(n^2)
+
+    # # SC O(1)
+            
+
+
+
+        
