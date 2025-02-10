@@ -21,6 +21,9 @@ class Solution:
             memo[(cur_str, length)] =count
             return memo[(cur_str, length)]
 
+            # TC O(N * 5) = O(N)
+        # SC O(N * 5) + O(N) = O(N) 
+
         return dp("", 0)
         # MOD = 10**9 + 7
         # vowels = {'a': ['e'],'e':['a','i'],'i':['a','e','o','u'],'o':['i','u'],'u':['a']}
