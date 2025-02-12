@@ -3,6 +3,8 @@ class Solution:
 
         # APPProach 2
         # optimized
+        # check if num -1 doest exist, then calculates longest 
+        # so that u vistit 1 item only ince in ineer loop
         longest = 0
         numSet = set(nums) # O(N)
         for num in numSet:
