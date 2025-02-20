@@ -7,4 +7,5 @@ class Solution:
             else:
                 map[nums] = 1
         return False
-        
+# TC O(N)
+# SC O(N)
