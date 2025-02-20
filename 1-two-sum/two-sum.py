@@ -8,5 +8,7 @@ class Solution:
                 return [numMap[diff], i]
             else:
                 numMap[num] = i
+        # TC O(N)
+        # SC  O(N)
         
         
