@@ -16,34 +16,22 @@ class Solution:
 
         # 1.  -1. -1  0 
 
-        prefic = 1
-        postfix =1
-        res= [1] * len(nums)
+
+        n = len(nums)
+        res = [1] * n
+
+        # 1st compute prefix
         for i in range(1, len(nums)):
-            res[i]= res[i-1] * nums[i-1]
-        
-        for i in range(len(nums)-1,-1,-1):
-            res[i] = postfix * res[i]
-            postfix= postfix * nums[i]
+            res[i] = res[i-1] * nums[i-1]
+        postfix = 1
+
+        # postfix is already 1 
+        # that mean calcu res = prefix * postfix
+        # then update postfix
+        for i in range(n -1 , -1,-1):
+            res[i]= postfix * res[i]
+            postfix = postfix * nums[i]
         return res
-
-
-
-        # n = len(nums)
-        # res = [1] * n
-
-        # # 1st compute prefix
-        # for i in range(1, len(nums)):
-        #     res[i] = res[i-1] * nums[i-1]
-        # postfix = 1
-
-        # # postfix is already 1 
-        # # that mean calcu res = prefix * postfix
-        # # then update postfix
-        # for i in range(n -1 , -1,-1):
-        #     res[i]= postfix * res[i]
-        #     postfix = postfix * nums[i]
-        # return res
 
     # TC O(N) + O(N)
     # SC O(1) as res is the o/p
