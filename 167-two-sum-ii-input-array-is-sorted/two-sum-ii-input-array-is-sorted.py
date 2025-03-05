@@ -12,7 +12,8 @@ class Solution:
             else:
                 l +=1
         return [-1,-1]
-            
+    # TC O(N)
+    # # SC O(1)     Note this is soreted so you can use two pointer   
 
 
     # approach 2
