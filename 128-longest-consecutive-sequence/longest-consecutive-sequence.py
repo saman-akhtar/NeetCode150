@@ -3,6 +3,7 @@ class Solution:
 
         lseq =0
         numSet = set(nums)
+        # just loop over set, not list which causes TLE
         for nums in numSet:
             streak = 1
             if nums -1 not in numSet:
