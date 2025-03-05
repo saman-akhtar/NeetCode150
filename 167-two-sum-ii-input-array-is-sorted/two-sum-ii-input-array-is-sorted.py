@@ -7,3 +7,5 @@ class Solution:
             else:
                 map[num]=i
         return [-1,-1]
+    # TC O(N)
+    # SC O(N)
