@@ -9,6 +9,7 @@ class Solution:
         # edge case dupli set ?
         # O(N)
         for i in range(n-2):
+            # edge
             if i > 0 and nums[i] == nums[i-1]:
                 continue
             j = i + 1
@@ -19,6 +20,7 @@ class Solution:
                 if( sums  == 0):
                    
                         resArr.append([nums[i], nums[j], nums[k]])
+                        # # edge even after adding dont stop
                         j +=1
                         while j < k and nums[j] == nums[j-1]:
                             j += 1
