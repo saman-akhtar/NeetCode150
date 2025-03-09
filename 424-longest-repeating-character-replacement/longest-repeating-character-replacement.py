@@ -1,16 +1,30 @@
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
 
+        # approach 2
         l = 0
         map = {}
         res =0
+        maxf = 0
         for r, ch in enumerate(s):
             map[ch]= map.get(ch, 0) + 1
-            while( r- l + 1 - max(map.values()) > k):
+            maxf= max(maxf,map[ch] )
+            while( r- l + 1 - maxf > k):
                 map[s[l]] -= 1
                 l +=1
             res = max(res, r-l +1)
         return res
+        #APPparoch 1
+        # l = 0
+        # map = {}
+        # res =0
+        # for r, ch in enumerate(s):
+        #     map[ch]= map.get(ch, 0) + 1
+        #     while( r- l + 1 - max(map.values()) > k):
+        #         map[s[l]] -= 1
+        #         l +=1
+        #     res = max(res, r-l +1)
+        # return res
             
 
         # #approch 1
