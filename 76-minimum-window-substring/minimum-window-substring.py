@@ -2,7 +2,8 @@ class Solution:
     def minWindow(self, s: str, t: str) -> str:
         if t == "":
             return ""
-        res = ""
+        # res = "" optimized to store indice ,as it creates new string everytime
+        res  = [-1,-1]
         l = 0
         have = 0
         smap = {}
@@ -17,16 +18,21 @@ class Solution:
             while have == need:
                 windLen = r - l + 1
                 if windLen < minLen:
-                    res = s[l:r+1]
+                    res = [l, r]
                     minLen = windLen
-                else:
-                    left_ch = s[l]
-                    if left_ch in tmap:
-                        if smap[left_ch] == tmap[left_ch]:
-                            have -= 1
-                        smap[left_ch] -= 1
-                    l += 1
-        return res
+                left_ch = s[l]
+                if left_ch in tmap:
+                    if smap[left_ch] == tmap[left_ch]:
+                        have -= 1
+                    smap[left_ch] -= 1
+                l += 1
+        l,r = res
+        return s[l:r+1]
+        # TC O(N)
+        #  ✅ O(N) means you touch each item a limited number of times.
+        # ❌ O(N²) means you keep checking the same items again and again.
+        # SC O(M), m is len of t
+        # smap: Stores characters found in s that match t, using O(M) space in the worst case.
 
 
 
