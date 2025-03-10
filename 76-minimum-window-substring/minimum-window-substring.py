@@ -27,7 +27,8 @@ class Solution:
                     smap[left_ch] -= 1
                 l += 1
         l,r = res
-        return s[l:r+1]
+        return s[l:r+1] if minLen != float('inf') else ""
+        # return 
         # TC O(N)
         #  ✅ O(N) means you touch each item a limited number of times.
         # ❌ O(N²) means you keep checking the same items again and again.
