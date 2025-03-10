@@ -6,7 +6,7 @@ class Solution:
         res  = [-1,-1]
         l = 0
         have = 0
-        smap = defaultdict(int)
+        smap = defaultdict(int) # otpize insted of using {}, avoid unecary get calls
         tmap = Counter(t)
         need = len(tmap)
         minLen = float('inf')
