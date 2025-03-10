@@ -6,13 +6,13 @@ class Solution:
         res  = [-1,-1]
         l = 0
         have = 0
-        smap = {}
+        smap = defaultdict(int)
         tmap = Counter(t)
         need = len(tmap)
         minLen = float('inf')
         for r,ch in enumerate(s):
             if ch in tmap:
-                smap[ch] = smap.get(ch,0) + 1
+                smap[ch]  += 1
                 if smap[ch] == tmap[ch]:
                     have += 1
             while have == need:
@@ -28,7 +28,6 @@ class Solution:
                 l += 1
         l,r = res
         return s[l:r+1] if minLen != float('inf') else ""
-        # return 
         # TC O(N)
         #  ✅ O(N) means you touch each item a limited number of times.
         # ❌ O(N²) means you keep checking the same items again and again.
