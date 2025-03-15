@@ -23,6 +23,7 @@ class Solution:
         return -1
                 
 
+# trick .. find which is sorted part , check target exist there in sorted part,else belong to undotred part
 
 # 4 5 6 0 1 2 3
 # O (Logn )
