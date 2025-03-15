@@ -12,7 +12,9 @@ class Solution:
         right = 1 +  self.maxDepth( root.right)
         return max(left,right)
 
-
+# TC O(N)
+# SC best case O(logN)
+#    worst case O(N)
 
 
 
