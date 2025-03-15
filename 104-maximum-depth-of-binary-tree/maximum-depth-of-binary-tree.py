@@ -6,6 +6,21 @@
 #         self.right = right
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        left = 1 +  self.maxDepth( root.left)
+        right = 1 +  self.maxDepth( root.right)
+        return max(left,right)
+
+
+
+
+
+
+
+
+
+    
 
         def findHeight(root, height):
             if not root:
@@ -19,4 +34,7 @@ class Solution:
             return height
         return findHeight(root, 0)
 
+# tc : O(N)
+# Sc: height -> balanced tree O(log n)
+#.           -> degerated tree : sort of limnked list -> total no of node O(N)
         
