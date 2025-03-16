@@ -6,6 +6,21 @@
 #         self.right = right
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
+
+        res = []
+        def findSmall(root):
+            if not root:
+                return
+            findSmall(root.left)
+            res.append(root.val)
+            findSmall(root.right)
+        findSmall(root)
+        return res[k-1]
+
+
+
+
+
         #approach 2
 
         arr = []
@@ -22,6 +37,8 @@ class Solution:
                 return cur.val
             
             cur = cur.right
+    # TC O(N)
+    # SC O(n)
         
 
 
@@ -39,3 +56,4 @@ class Solution:
         # return arr[k-1]
 # TC O(N)
 # SC O(N) 
+
