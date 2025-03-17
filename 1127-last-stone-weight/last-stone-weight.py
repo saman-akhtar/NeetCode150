@@ -2,12 +2,9 @@ class Solution:
     def lastStoneWeight(self, stones: List[int]) -> int:
         new_stones = [-1 * stone for stone in stones]
         heapq.heapify(new_stones)
-        while new_stones:
+        while len(new_stones) > 1:
             stone1 = heapq.heappop(new_stones)
-            if new_stones:
-                stone2 = heapq.heappop(new_stones)
-            else:
-                return abs(stone1)
+            stone2 = heapq.heappop(new_stones)
             diff = abs(stone1 -stone2)
             if diff > 0:
                 heapq.heappush(new_stones, -diff)
