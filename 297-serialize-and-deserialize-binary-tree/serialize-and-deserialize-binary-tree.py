@@ -13,31 +13,58 @@ class Codec:
         :type root: TreeNode
         :rtype: str
         """
+        res = []
         if not root:
-            return "N"
-        arr =[]
-        q = deque([root])
+            res.append("N")
+        q = deque()
+        
+        q.append(root)
         while q:
-            qlen = len(q)
-            for i in range(qlen):
+            n = len(q)
+            for i in range(n):
                 node = q.popleft()
-                
                 if node:
+                    res.append(str(node.val))
                     q.append(node.left)
                     q.append(node.right)
-                    arr.append(str(node.val))
                 else:
-                    arr.append("N")
-        return ",".join(arr)
-                    
-        
-
+                    res.append("N")
+        return ",".join(res)
+         # TC O(N)
+         # SC : stack , res => O(h)
+         # WORST CASE O(N)
+         # best case O(logN)
     def deserialize(self, data):
         """Decodes your encoded data to tree.
         
         :type data: str
         :rtype: TreeNode
         """
+        value = data.split(",")
+        if value[0] == "N":
+            return None
+        root = TreeNode(int(value[0]))
+        q = deque([root])
+        index  = 1
+        while q :
+            # n = len(q)
+            # for i in range(n):
+                node = q.popleft()
+                if value[index] != "N":
+                    node.left =  TreeNode(int(value[index]))
+                    q.append(node.left)
+                index += 1
+                if value[index] != "N":
+                    node.right =  TreeNode(int(value[index]))
+                    q.append(node.right)
+                index += 1
+        return root
+
+
+
+
+
+
         val = data.split(",")
         if val[0] == "N":
             return None
