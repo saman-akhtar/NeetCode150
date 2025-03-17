@@ -7,15 +7,33 @@
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
 
-        res = []
-        def findSmall(root):
-            if not root:
+        # approach 2
+        self.count = 0
+        self.result = None
+        def inorder(root):
+            if not root :
                 return
-            findSmall(root.left)
-            res.append(root.val)
-            findSmall(root.right)
-        findSmall(root)
-        return res[k-1]
+            inorder(root.left)
+            self.count += 1
+            if self.count == k:
+                self.result = root.val
+            inorder(root.right)
+        inorder(root)
+        return self.result
+
+
+        # approach 1
+        # res = []
+        # def findSmall(root):
+        #     if not root:
+        #         return
+        #     findSmall(root.left)
+        #     res.append(root.val)
+        #     findSmall(root.right)
+        # findSmall(root)
+        # return res[k-1]
+        # tC O(N)
+        # SC O(N) + O(h) => storing all node + call stack
 
 
 
