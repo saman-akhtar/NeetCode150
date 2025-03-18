@@ -4,7 +4,8 @@ class Solution:
         # DP top down
 
         # DP MEMOZATIOn
-        def memo(n, climb):
+        climb = {}
+        def memo(n):
         
             if n == 1:
                 return 1
@@ -13,12 +14,12 @@ class Solution:
             if n in climb:
                 return climb[n]
         
-            stair1 =  climb[n-1]  if n -1  in climb else memo(n-1,climb)
-            stair2 =  climb[n-2] if n -2  in climb else memo(n-2,climb)
+            stair1 =  climb[n-1]  if n -1  in climb else memo(n-1)
+            stair2 =  climb[n-2] if n -2  in climb else memo(n-2)
             climb[n]=  stair1 + stair2
             return climb[n]
-        climb = {}
-        return memo(n, climb)
+        
+        return memo(n)
 
         # RECURSION Approach 1
         # if n == 1:
