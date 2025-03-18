@@ -11,7 +11,8 @@ class Solution:
             cur = max(num + prev1, prev2)
             prev2,prev1 =  cur, prev2
         return prev2
-
+  #TC O(N)
+  # SC O(N)
 
 
 
