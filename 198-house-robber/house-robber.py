@@ -8,9 +8,9 @@ class Solution:
         prev1, prev2 = 0, 0
 
         for num in nums:
-            cur = max(num + prev2, prev1)
-            prev2,prev1 =  prev1,cur
-        return prev1
+            cur = max(num + prev1, prev2)
+            prev2,prev1 =  cur, prev2
+        return prev2
 
 
 
