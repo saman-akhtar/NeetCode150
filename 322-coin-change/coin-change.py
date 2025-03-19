@@ -1,32 +1,45 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
 
+        # DP :top down
+        # n = len(coins)
+        # dp = [[float("inf")]*(amount + 1) for i in range(n+ 1)]
+        # for i in range(n +1):
+        #     dp[i][0]=  0
 
+        # for i in range(1,n + 1):
+        #     for j in range(1, amount + 1):
+
+        #         if coins[i-1] <= j:
+        #             dp[i][j]= min(dp[i-1][j], 1 + dp[i][j - coins[i-1]])
+        #         else:
+        #             dp[i][j]= dp[i-1][j]
+        # return dp[n][amount] if dp[n][amount] != float('inf') else -1
+        # # TC O(N)
+        # SC O(1)
+
+        # approach 2 memoization
+        # DP bottom up
+        memo = {}
+        def find_min_amt(i, amt):
+            if i <= 0 or amt < 0:
+                return float('inf')
+            if amt == 0 :
+                return 0
+            
+
+            if (i,amt) in memo:
+                return memo[(i,amt)]
+            # if coins[i-1]
+            if coins[i-1] <= amt:
+                res = min(1 + find_min_amt(i, amt-coins[i-1]), find_min_amt(i-1, amt))
+            else:
+                res = find_min_amt(i-1, amt)
+            memo[(i,amt)]= res
+            return res
         n = len(coins)
-        dp = [[float("inf")]*(amount + 1) for i in range(n+ 1)]
-        for i in range(n +1):
-            dp[i][0]=  0
-
-        for i in range(1,n + 1):
-            for j in range(1, amount + 1):
-
-                if coins[i-1] <= j:
-                    dp[i][j]= min(dp[i-1][j], 1 + dp[i][j - coins[i-1]])
-                else:
-                    dp[i][j]= dp[i-1][j]
-        return dp[n][amount] if dp[n][amount] != float('inf') else -1
-        # def find_coins(i):
-        #     if coins[i-1] <= total_amt:
-        #         dp[i][j] = min(1 + arr[i-1][j-coin[i]] , arr[i-1][j])
-        #     else:
-        #         dp[i][j] = arr[i-1][j]
-
-
-        
-        # find_coins()
-
-
-
+        result = find_min_amt(n, amount)
+        return result if result != float('inf') else -1
         # 12 2 2 2 2 
         # MEMOIZATION
 
