@@ -1,5 +1,32 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
+
+
+        n = len(coins)
+        dp = [[float("inf")]*(amount + 1) for i in range(n+ 1)]
+        for i in range(n +1):
+            dp[i][0]=  0
+
+        for i in range(1,n + 1):
+            for j in range(1, amount + 1):
+
+                if coins[i-1] <= j:
+                    dp[i][j]= min(dp[i-1][j], 1 + dp[i][j - coins[i-1]])
+                else:
+                    dp[i][j]= dp[i-1][j]
+        return dp[n][amount] if dp[n][amount] != float('inf') else -1
+        # def find_coins(i):
+        #     if coins[i-1] <= total_amt:
+        #         dp[i][j] = min(1 + arr[i-1][j-coin[i]] , arr[i-1][j])
+        #     else:
+        #         dp[i][j] = arr[i-1][j]
+
+
+        
+        # find_coins()
+
+
+
         # 12 2 2 2 2 
         # MEMOIZATION
 
@@ -32,7 +59,7 @@ class Solution:
                     dp[i][j] = dp[i-1][j]
         return -1 if dp[n][amount] == float('inf') else dp[n][amount]
         # TC =  O(n×amount)
-        # SC recursive = O(n×amount) only for string 2d
+        # SC recursive = O(n×amount) only for string 2d We use a (n+1) x (amount+1) matrix.
        
 
 
