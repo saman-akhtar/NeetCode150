@@ -22,7 +22,7 @@ class Solution:
         # DP bottom up
         memo = {}
         def find_min_amt(i, amt):
-            if i <= 0 or amt < 0:
+            if i < 0 or amt < 0:
                 return float('inf')
             if amt == 0 :
                 return 0
