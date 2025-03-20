@@ -56,7 +56,7 @@ class Solution:
         
         n = len(s)
         count = 0
-        def is_palin(s,i,j):
+        def is_palin(i,j):
             res = 0
             while i >=0 and j < len(s) and  s[i] == s[j]:
                     i -=1
@@ -66,7 +66,8 @@ class Solution:
 
 
         for i in range(n):
-            count += is_palin(s,i,i)
-            count += is_palin(s, i,i+1)
+            count += is_palin(i,i)
+            count += is_palin( i,i+1)
         return count
-        
+        # tc O(n ^2 )
+        # Sc O(1)
