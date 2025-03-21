@@ -13,8 +13,18 @@ class Solution:
             return prev2
         
         return max( helper(nums[1:]),helper(nums[:-1]))
-    # tC O(n)
-    # Sc O(1)
+    # tC O(n) O(n)+O(n)=O(n).
+    # Sc O(1) Space Complexity: 
+# \U0001d442
+# (
+# \U0001d45b
+# )
+# O(n) (due to slicing; otherwise 
+# \U0001d442
+# (
+# 1
+# )
+# O(1) for the DP logic)
 
 
 
