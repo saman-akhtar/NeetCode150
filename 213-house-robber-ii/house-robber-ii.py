@@ -1,5 +1,20 @@
 class Solution:
     def rob(self, nums: List[int]) -> int:
+        n = len(nums)
+        if n == 1:
+            return nums[0]
+
+        # top down
+        def helper(newarr):
+            prev1, prev2 = 0,0
+            for arr in newarr:
+                newRob = max(prev1 + arr, prev2)
+                prev2,prev1 = newRob, prev2
+            return prev2
+        
+        return max( helper(nums[1:]),helper(nums[:-1]))
+    # tC O(n)
+    # Sc O(1)
 
 
 
@@ -28,6 +43,9 @@ class Solution:
         
         return max(dfs(n, True), dfs(n-1, False))
 
+        # TC O N ^ 2
+        # SC  O(n) + o(n ^2)
+
         # RECURSION
         n = len(nums)
         if n == 1:
@@ -49,6 +67,9 @@ class Solution:
             
         
         return max(dfs(n, True), dfs(n-1, False))
+
+        # TC O(2 ^ n)
+        # SC O(N)
 
 
 
