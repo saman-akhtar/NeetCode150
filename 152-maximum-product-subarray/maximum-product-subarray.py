@@ -12,6 +12,29 @@ class Solution:
         #     curMin = min(oldMax , curMin * n, n)
         #     res = max(res, curMax)
         # return res
+    
+        n = len(nums)
+        memo = {}
+        
+        # Returns a tuple: (max_product starting at i, min_product starting at i)
+        def dfs(i):
+            if i == n - 1:
+                return (nums[i], nums[i])
+            if i in memo:
+                return memo[i]
+            nextMax, nextMin = dfs(i + 1)
+            cur = nums[i]
+            curMax = max(cur, cur * nextMax, cur * nextMin)
+            curMin = min(cur, cur * nextMax, cur * nextMin)
+            memo[i] = (curMax, curMin)
+            return memo[i]
+        
+        overall = -float('inf')
+        for i in range(n):
+            curMax, _ = dfs(i)
+            overall = max(overall, curMax)
+        return overall
+
         def dfs(i, curMax, curMin, overall):
             # When we've processed all elements, return overall.
             if i == len(nums):
