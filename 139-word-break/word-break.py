@@ -2,15 +2,22 @@ class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         # cats and og
         # cat sandog. sand i
-        # n = len(s)
-        # wordSet = set(wordDict)
-        # dp = [True] * (n+1)
-        # for i in range(1,n+1):
-        #     for j in range(0, i):
-                
-        #         dp[i]= dp[i][j] and s[j: i] in wordSet
-        # return dp[n]
 
+        # BOTTOM Up
+        n = len(s)
+        wordSet = set(wordDict)
+        dp = [False] * (n+1)
+        dp[0] = True
+        for i in range(1,n+1):
+            for j in range(0, i):
+                
+                if dp[j] and s[j: i] in wordSet:
+                # You need to set dp[i] = True if any valid j works.
+                    dp[i] = True
+                    break
+        return dp[n]
+        # TC O (n ^2)
+        # SC O(N)
         word ={}
         wordSet = set(wordDict)
         def cansegmentString(i ):
@@ -30,6 +37,9 @@ class Solution:
             return word[i]
         n = len(s)
         return cansegmentString(n)
+        # TC O (n ^2)
+        # SC O(n) for memo +O(n) for recursion stack = O(n)
+
 
 
 
