@@ -24,7 +24,7 @@ class Solution:
             if i== 0:
                 # "" is semntable ?
                 return True
-            # check semnet s[o:i] ? chag is
+            # check segmnet s[o:i] ? chag is
             if (i) in word:
                 return word[i]
             for j in range(i):
