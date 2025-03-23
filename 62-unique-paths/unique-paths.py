@@ -14,8 +14,10 @@ class Solution:
                 if i == 1 and j == 1:
                     continue  # skip already set
                 if i > 0:
+                    # top
                     dp[i][j] += dp[i - 1][j]
                 if j > 0:
+                    # left
                     dp[i][j] += dp[i][j - 1]
 
         return dp[m][n]
