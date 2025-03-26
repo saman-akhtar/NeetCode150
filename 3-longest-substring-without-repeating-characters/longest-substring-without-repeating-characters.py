@@ -11,6 +11,9 @@ class Solution:
             windL = max(windL, len(wind))
         return windL
 
+        # TC O(N)
+        # SC ON or O(min (N, M) m is no of ch in asciii, for ehg alphbet 26
+
 
     # APROACH 1
     # def lengthOfLongestSubstring(self, s: str) -> int:
