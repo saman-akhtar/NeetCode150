@@ -27,4 +27,13 @@ class Solution:
         return res
 
 
-        
+#         Step	Time	Space
+# BFS Traversal	O(n)	O(n)
+# Map Storage	O(n)	O(n)
+# Sorting Keys (y)	O(k log k) ≤ O(n log n)	O(k)
+# Sorting Values (x, val)	O(n log n)	O(n)
+# Extracting Values	O(n)	O(n)
+# ✅ Total
+# \U0001f552 Time Complexity: O(n log n)
+
+# \U0001f4be Space Complexity: O(n)
