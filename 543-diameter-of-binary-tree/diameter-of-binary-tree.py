@@ -6,19 +6,21 @@
 #         self.right = right
 class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-
-        def dfs( root):
+        self.res = 0
+        def dfs(root):
             if not root:
-                return 0,0
-            
-            maxLdia,left = dfs(root.left)
-            maxRdia, right = dfs(root.right)
-            height = max(left, right) + 1
+                return 0
+            left = dfs(root.left)
+            right = dfs(root.right)
             cur_dia = left + right
-            dia = max(cur_dia, maxRdia, maxLdia)
-            return dia, height
-        dia, height = dfs(root)
-        return dia
+            self.res  = max(self.res, cur_dia)
+            return  1 + max(left,right)
+        dfs(root)
+        return self.res 
+
+      
 
 
-       
+
+       # TC O(N)
+       # SC height of logn or O(n) if skewed
