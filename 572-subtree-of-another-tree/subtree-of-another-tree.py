@@ -9,20 +9,18 @@ class Solution:
         def isSameTree(root,subRoot):
             if not root and not subRoot:
                 return True
-            if not root or not subRoot:
-                return False
-            if root.val != subRoot.val:
-                return False
-            return isSameTree(root.left,subRoot.left) and isSameTree(root.right,subRoot.right)
-
-        if not root and not subRoot:
-            return True
-        if not root or not subRoot:
+            if root and subRoot and root.val == subRoot.val:
+          
+                return isSameTree(root.left,subRoot.left) and isSameTree(root.right,subRoot.right)
             return False
-        res1 = False
-        if root.val == subRoot.val:
-            res1 = isSameTree(root,subRoot)
-        if (res1):
+
+        if  not subRoot:
+            return True
+        if not root:
+            return False
+        isSameTree = isSameTree(root,subRoot)
+            
+        if (isSameTree):
             return True
 
         return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right,subRoot)
