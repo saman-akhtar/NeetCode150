@@ -26,4 +26,6 @@ class Solution:
         return self.isSubtree(root.left, subRoot) or self.isSubtree(root.right,subRoot)
 
         
-        
+#         Metric	Complexity
+# Time Complexity	O(n × m)
+# Space Complexity	O(max(n, m))
