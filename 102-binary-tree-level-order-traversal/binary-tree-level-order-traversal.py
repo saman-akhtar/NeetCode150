@@ -6,9 +6,9 @@
 #         self.right = right
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        q = deque()
-        q.append(root)
-        level = 0
+        if not root:
+            return []
+        q = deque([root])
         res = []
         while q:
             n = len(q)
@@ -21,8 +21,8 @@ class Solution:
                     q.append(node.right)
             if cur_res:
                 res.append(cur_res)
-
         return res
+       
 
 
                     
