@@ -16,7 +16,7 @@ class Solution:
             right_path = max(dfs(root.right),0)
             cur_path = root.val  + left_path + right_path
             max_path = max(max_path, cur_path )
-            return root.val + max(left_path, right_path)
+            return root.val + max(left_path, right_path) # there can only be 1 split.. alreay sploting at parent so return eoth left path or righ pathd
         dfs(root)
         return max_path
         
