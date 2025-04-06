@@ -18,16 +18,15 @@
 
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:    
-        if not preorder  or not inorder:
+        if not preorder and not inorder:
             return None
-        root = TreeNode(preorder[0])
-        index = inorder.index(preorder[0])
-        root.left = self.buildTree( preorder[1:index+1], inorder[:index]) 
-        right = self.buildTree( preorder[index +1:], inorder[index +1:]) 
-        root.right  = right
+        root_val = preorder[0]
+        root = TreeNode(root_val)
+        inorder_indx = inorder.index(root_val)
+        # note imp: inorder_indx is ssame used in preorder to determine end of left part
+        root.left = self.buildTree(preorder[1:inorder_indx+1], inorder[:inorder_indx])
+        root.right = self.buildTree(preorder[inorder_indx+1:], inorder[inorder_indx+1:])
         return root
-
-
 
 
 
