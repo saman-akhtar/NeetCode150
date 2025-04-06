@@ -22,7 +22,7 @@ class Solution:
         return self.count
 
 # TC O(N)
-# SC O(H)
+# SC O(H) O(logn) is balnced, O(N)if skewed
 
 
         
