@@ -14,22 +14,22 @@ class Codec:
         :rtype: str
         """
         res = []
-        if not root:
-            res.append("N")
-        q = deque()
-        
-        q.append(root)
-        while q:
-            n = len(q)
-            for i in range(n):
-                node = q.popleft()
-                if node:
-                    res.append(str(node.val))
-                    q.append(node.left)
-                    q.append(node.right)
-                else:
-                    res.append("N")
-        return ",".join(res)
+        def dfs(root):
+            nonlocal res
+            if not root:
+                res.append("N")
+                return 
+            res.append(str(root.val))
+            dfs(root.left)
+            
+            dfs(root.right)
+            return
+        dfs(root)
+        ans = ",".join(res)
+        print("ANS",ans)
+        return ans
+        # n 2 n 1 3 4 5 
+        # 1 2 n n 3 4 nul null 5 null nill
          # TC O(N)
          # SC : stack , res => O(h)
          # WORST CASE O(N)
@@ -40,48 +40,30 @@ class Codec:
         :type data: str
         :rtype: TreeNode
         """
-        value = data.split(",")
-        if value[0] == "N":
-            return None
-        root = TreeNode(int(value[0]))
-        q = deque([root])
-        index  = 1
-        while q :
-            # n = len(q)
-            # for i in range(n):
-                node = q.popleft()
-                if value[index] != "N":
-                    node.left =  TreeNode(int(value[index]))
-                    q.append(node.left)
-                index += 1
-                if value[index] != "N":
-                    node.right =  TreeNode(int(value[index]))
-                    q.append(node.right)
-                index += 1
-        return root
+        res = data.split(",")
+        self.i = 0
+        # 1 2 n n 3 4 nul null 5 null nill
+        def createTree():
+            # base case
+            if res[self.i] == "N":
+                # also inc i so that we tell process nxt
+                self.i += 1
+                return None
+            ch = res[self.i]
+            node = TreeNode(int(ch))
+            self.i += 1
+            node.left = createTree()
+            node.right = createTree()
+            return node
+        node = createTree()
+        return node
 
 
 
 
 
 
-        val = data.split(",")
-        if val[0] == "N":
-            return None
-        root = TreeNode(int(val[0]))
-        q = deque([root])
-        ind = 1
-        while q:
-            node = q.popleft()
-            if (val[ind]!= "N"):
-                node.left = TreeNode(int(val[ind]))
-                q.append(node.left)
-            ind +=1
-            if (val[ind]!= "N"):
-                node.right = TreeNode(int(val[ind]))
-                q.append(node.right)
-            ind +=1
-        return root
+
             
 # Time complexity: 
 
