@@ -8,41 +8,30 @@ class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         # treat each round in func as treating1 node
         # NOTE this is bst so utilize already ordered form
-        self.count = 0
-        self.res = None
+        count = 0
+        res = None
         def inorder(root):
+            nonlocal count, res
             if not root:
                 return 
             inorder(root.left)
             # now u r tretaing cur note
-            self.count += 1
-            if (self.count == k):
-                self.res = root.val
+            count += 1
+            if (count == k):
+                res = root.val
             inorder(root.right)
             return
         
 
         inorder(root)
-        return self.res
+        return res
 
 
 
 
 
 
-        # approach 2
-        self.count = 0
-        self.result = None
-        def inorder(root):
-            if not root :
-                return
-            inorder(root.left)
-            self.count += 1
-            if self.count == k:
-                self.result = root.val
-            inorder(root.right)
-        inorder(root)
-        return self.result
+       
         # TC O(N)
         # SC is O(h) in saving stack space
 
