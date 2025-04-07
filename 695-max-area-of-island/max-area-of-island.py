@@ -1,32 +1,37 @@
 class Solution:
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
-        area = 0
-        row,col = len(grid), len(grid[0])
+        if not grid:
+            return 0
+        ROW,COL = len(grid), len(grid[0])
         visit = set()
-
+        max_area = 0
+        dir = [[1,0],[0,1],[0,-1],[-1,0]]
         def bfs(r,c):
+            # nonlocal dir
             visit.add((r,c))
-            q = deque([])
-            q.append((r,c))
-            area =  1
+            q = deque([(r,c)])
+            cur_area = 1
             while q:
-                for i in range(len(q)):
-                    rq,cq = q.popleft()
-                    dirs = [[1,0],[-1,0],[0,1],[0,-1]]
+                r1,c1 = q.popleft()
+                # No Level Distinction Needed so no nned to popleft in loop
+                for dr,dc in dir:
+                    row,col = dr + r1, dc + c1
+                    if (row,col) not in visit and row in range(ROW ) and col in range(COL) and grid[row][col] == 1:
+                        q.append((row,col))
+                        # in dfs u dont add in visit bit here add
+                        visit.add((row,col))
+                        cur_area += 1
+            return cur_area
 
-                    for (dr,dc) in dirs:
-                        r1 = dr + rq
-                        c1 = dc + cq
-                        if((r1,c1) not in visit and r1 in range(row) and c1 in range(col) and grid[r1][c1] ==1 ):
-                            visit.add((r1,c1)) 
-                            q.append((r1,c1))
-                            area += 1
-            return area
-        
-        for r in range(row):
-            for c in range(col):
-                if(grid[r][c]== 1 and (r,c) not in visit):
-                    cur_area = bfs(r,c)
-                    area = max(area, cur_area)
-        return area
-        
+
+
+        for r in range(ROW):
+            for c in range(COL):
+                if grid[r][c] == 1 and (r,c) not in visit:
+                    area = bfs(r,c)
+                    max_area = max(area, max_area)
+        return max_area
+
+# TC O(N.M)
+
+# SC 
