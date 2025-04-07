@@ -1,5 +1,8 @@
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
+        
+
+        # DFS
         if not grid:
             return 0
         ROW,COL = len(grid), len(grid[0])
@@ -21,4 +24,16 @@ class Solution:
                     dfs(r,c)
                     no_island += 1 
         return no_island
+
+        # O(n *m)
+#         Time Complexity: 
+
+# O(m×n)
+# Each "1" cell is visited only once due to the visited set, ensuring no cell is processed multiple times.
+
+# Space Complexity: 
+# O(m×n)
+# Due to the visited set and potential recursion stack depth in the worst-case scenario.
+
+# visited once , but check 5 time 1 in first dfs loop & 4 for dir .. but constant doest contribite to tc
         
