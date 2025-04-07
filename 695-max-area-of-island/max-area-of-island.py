@@ -34,4 +34,4 @@ class Solution:
 
 # TC O(N.M)
 
-# SC 
+# SC q and visit set O(N*M)
