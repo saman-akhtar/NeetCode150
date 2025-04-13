@@ -19,4 +19,5 @@ class Solution:
                 num += value
             prev_val = value
         return num
-        
+        # TC O(N)
+        # SC O(1)
