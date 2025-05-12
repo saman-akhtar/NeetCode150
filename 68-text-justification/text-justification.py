@@ -44,8 +44,56 @@ class Solution:
         last_line += " " * (maxWidth - len(last_line))
         ans.append(last_line)
         return ans
-# TC n * m
-# SC 
+# Time complexity
+# The algorithm does two things:
+
+# Linear pass over the word list
+# Each word is examined once and we add len(word) to a running total.
+# → cost ≈ Σ len(word) = n · m
+
+# Build each output line once
+# When a line is full we “print” it: concatenate all its words and spaces.
+# Every word-character is copied exactly once into some output string.
+# → additional cost ≈ n · m
+
+# Add them together and constants vanish:
+
+# TC 
+# =
+# \U0001d442
+# (
+# \U0001d45b
+# ⋅
+# \U0001d45a
+# )
+# TC =O(n⋅m)
+# ​
+ 
+# Space complexity
+# Required output: the justified text itself is the same size as the input (n · m characters).
+# → O(n · m)
+
+# Extra working memory: a handful of integers plus a temporary list that, at most, holds the words that fit on one line (≤ maxWidth, a constant bound).
+# → O(maxWidth) ≈ O(1) if maxWidth is treated as fixed.
+
+# SC 
+# =
+# \U0001d442
+# (
+# \U0001d45b
+# ⋅
+# \U0001d45a
+# )
+#  (output)
+# +
+# \U0001d442
+# (
+# 1
+# )
+#  auxiliary
+# SC =O(n⋅m) (output)+O(1) auxiliary
+# ​
+ 
 
 
             
