@@ -28,24 +28,24 @@ class Solution:
                         parts.append(words[idx])
                         # first `extra` gaps get 1 extra blank
                         parts.append(per_space + (" " if idx - start < extra_space else ""))
+                        #“Put one more space in the left-most gaps until you run out.” 
+                        # so extra soace shoul be evendsirtubeted
                     parts.append(words[i - 1])                           # last word
                     new_line = "".join(parts)
-                    # new_line = per_space.join(words[start: i])
-                    # new_line = new_line[:len(words[start])] +  (" " * extra_space )+ new_line[len(words[start]):]
                 ans.append(new_line)
 
                 # reset
                 # i -=1
                 start = i
                 cur_len = len(words[i])
-                # print("I vali after", i,start)
 
             i += 1
         last_line = " ".join(words[start:])
         last_line += " " * (maxWidth - len(last_line))
         ans.append(last_line)
         return ans
-
+# TC n * m
+# SC 
 
 
             
