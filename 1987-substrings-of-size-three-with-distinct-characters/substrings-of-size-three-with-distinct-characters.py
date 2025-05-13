@@ -15,7 +15,8 @@ class Solution:
                 l += 1
             r += 1
         return res
-
+    # TC O(N)
+    # Sc O(1) ste conatin 3 ch
             
 
         
