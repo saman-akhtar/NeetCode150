@@ -1,11 +1,12 @@
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        map = {}
-        for i, nums in enumerate(nums):
-            if nums in map:
+        dicts = {}
+        for i in nums:
+            if i in dicts:
                 return True
             else:
-                map[nums] = 1
+                dicts[i] = 1
+
+
         return False
-# TC O(N)
-# SC O(N)
+        
