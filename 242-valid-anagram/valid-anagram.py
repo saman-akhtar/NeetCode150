@@ -1,5 +1,7 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
 
 
         def createAnagram(word):
@@ -8,9 +10,7 @@ class Solution:
                 dicts[i]= 1 + dicts.get(i,0)
             return dicts
 
-        ana1 = createAnagram(s)
-        ana2 = createAnagram(t)
-        if ana1 == ana2:
+        if createAnagram(s) == createAnagram(t):
             return True
         return False
 
