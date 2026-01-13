@@ -1,16 +1,25 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        # unique 
-        result = {}
-        for i,num in enumerate(nums):
-            diff = target - num
-            if  diff in result:
-                index = result[diff]
-                return [index, i ]
+        d = {}
+        for i, n in enumerate(nums):
+            diff = target -n
+            if diff in d:
+                return [d[diff],i]
             else:
-                result[num] = i
-        
-        # TC O(N)
-        # SC  O(N)
-        
-        
+                d[n]= i
+
+
+
+        # nums.sort()
+        # l = 0
+        # r = len(nums)-1
+        # while l < r:
+        #     summ = nums[l]+ nums[r]
+        #     if summ == target:
+        #         return [l, r]
+        #     elif summ > target:
+        #         r -= 1
+        #     else:
+        #         l +=1
+        # return [0,0]
+
