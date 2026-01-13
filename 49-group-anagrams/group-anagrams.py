@@ -1,17 +1,10 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        map = defaultdict(list)
-        # TC  O(N)
-        for st in strs:
-            nst = [0] * 26
-            # O(26)
-            for s in st:
-                index = ord(s)- ord('a')
-                nst[index] = nst[index] + 1
-            map[tuple(nst)].append(st)
-        res = []
-        return list(map.values())
-            
-        
-     
-        
+        alpha = {}
+        for w in strs:
+            arr = [0]*26
+            for l in w:
+                arr[ord(l) - ord('a')] += 1
+            key = tuple(arr)
+            alpha.setdefault(key,[]).append(w)
+        return list(alpha.values())
