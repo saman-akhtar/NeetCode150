@@ -14,7 +14,6 @@ class Solution:
         for i in range(len(nums),0,-1):
             if len(count[i]) > 0:
                     res.extend(count[i])
-            print("res 1:::",res, res[0:k], res[0:k-1])
             if len(res) >=k:
                 return res[0:k]
         return res[0:k-1]
