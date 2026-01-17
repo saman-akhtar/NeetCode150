@@ -21,8 +21,6 @@ class Codec:
             j = i
             while s[j] != '#':
                 j += 1
-                print(j)
-            print(i, j-1)
             no_len= int(s[i:j])
             j = j+ 1
             new_str = s[j: j+ no_len]
