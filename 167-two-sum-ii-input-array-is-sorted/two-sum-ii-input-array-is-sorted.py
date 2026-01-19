@@ -12,3 +12,4 @@ class Solution:
             else:
                 l +=1
         return [-1.-1]
+# TC O(N)
