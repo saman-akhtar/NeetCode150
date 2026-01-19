@@ -1,12 +1,12 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        s = ''.join([ ch for ch in s if ch.isalnum()])
+        s = ''.join([ ch.lower() for ch in s if ch.isalnum()])
         length = len(s)
         if length < 2:
             return True
         l = 0
         r = length -1
-        s = s.lower()
+      
 
 
         while l < r:
@@ -19,3 +19,6 @@ class Solution:
         return True
 # A man, a plan, a canal: Panama#
         
+
+        # TC O(N) + O(N)
+        # SC
