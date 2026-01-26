@@ -1,89 +1,41 @@
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        if t == "":
-            return ""
-        # res = "" optimized to store indice ,as it creates new string everytime
-        res  = [-1,-1]
+        l1 = len(s)
+        l2 = len(t)
+        res =""
+        if l2 > l1:
+            return res
+        minlen = l1 +1
+        minl =0
+        count2 = Counter(t)
+        count1 = {}
         l = 0
+        r =0
+        need = len(count2)
         have = 0
-        smap = defaultdict(int) # otpize insted of using {}, avoid unecary get calls
-        tmap = Counter(t)
-        need = len(tmap)
-        minLen = float('inf')
-        for r,ch in enumerate(s):
-            if ch in tmap:
-                smap[ch]  += 1
-                if smap[ch] == tmap[ch]:
-                    have += 1
+        # for r in range(l1):
+        for r in range(l1):
+            count1[s[r]]= count1.get(s[r], 0) + 1
+            if s[r] in count2 and count1[s[r]] == count2[s[r]]:
+                have += 1
+
+            # start sliding
             while have == need:
-                windLen = r - l + 1
-                if windLen < minLen:
-                    res = [l, r]
-                    minLen = windLen
-                left_ch = s[l]
-                if left_ch in tmap:
-                    if smap[left_ch] == tmap[left_ch]:
-                        have -= 1
-                    smap[left_ch] -= 1
+                # find min wind
+                if minlen > r - l + 1:
+                    minl = l
+                    minlen =  r - l + 1
+
+
+                #slide
+                count1[s[l]] -= 1
+                if s[l] in count2 and count1[s[l]]  == count2[s[l]] -1:
+                    have -= 1
                 l += 1
-        l,r = res
-        return s[l:r+1] if minLen != float('inf') else ""
-        # TC O(N)
-        #  ✅ O(N) means you touch each item a limited number of times.
-        # ❌ O(N²) means you keep checking the same items again and again.
-        # SC O(M), m is len of t
-        # smap: Stores characters found in s that match t, using O(M) space in the worst case.
+        
+        if minlen != l1 + 1 :
+            return s[minl: minl + minlen]
+        return ""
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        # if t == "":
-        #     return ""
-        # have, need ,l = 0,0, 0
-        # map1 = {}
-        # map2 = {}
-        # res = [-1,-1]
-        # rlen = float("infinity")
-        # # O(M)
-        # for i in t :
-        #     map1[i]= 1 + map1.get(i,0)
-        # need = len(map1)
-        # # O(N)
-        # for r in range(len(s)):
-        #     c = s[r]
-        #     map2[c] = 1 + map2.get(c,0)
-        #     if c in map1 and map1[c]== map2[c]:
-        #         have += 1
-        #    # amortized O(∣n∣) 
-        #     while( have == need):
-        #         if ( r-l + 1 ) < rlen:
-        #             rlen =  r - l + 1
-        #             res= [l, r]
-        #         #pop from left
-                
-        #         map2[s[l]] -= 1
-        #         if s[l] in map1 and map1[s[l]] > map2[s[l]]:
-        #             have -= 1
-        #         l += 1
-        # l,r = res
-        # return s[l:r+1]
-            
-#TC O(N + m)= O(N)
-# SC = o(N + m) = O(N)
- 
         
