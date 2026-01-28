@@ -1,42 +1,26 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        brackets = {"}":"{",")":"(","]":"["}
         stack = []
-        for ch in s:
-            if ch not in brackets:
-                stack.append(ch)
-            else:
-                if stack:
-                   cur_ch = stack.pop()
-                   expected_ch = brackets[ch]
-                   print(expected_ch)
-                   if expected_ch != cur_ch:
+        open_brac= ["(",'{', '[']
+        close_brack =[")","}","]"]
+        for b in s:
+            if stack and stack[-1] in open_brac:
+                prev_brack = stack[-1]
+                if b in close_brack:
+                    if prev_brack == "(" and b != ")":
                         return False
+                    elif prev_brack == "{" and b != "}":
+                        return False
+                    elif prev_brack == "[" and b != "]":
+                        return False
+                    stack.pop()
                 else:
-                    return False
+                    stack.append(b)   
+                        
+            else:
+                stack.append(b)
+        print("stack",stack)
         if stack:
             return False
         return True
-
-
-
-
-
-
-
-
-        # stack = []
-        # for bracket in s:
-        #     if ( bracket not in [")","]","}"]):
-        #         stack.append(bracket)
-        #     else:
-        #         if(stack):
-        #             old_bracket = stack.pop()
-        #             if( bracket == ")" and old_bracket == "(" or bracket == "}" and old_bracket == "{" or  bracket == "]" and old_bracket == "["):
-        #                 continue
-        #             return False
-        #         else:
-        #             return False
-        # return not stack
-# TC O(N)
-# SC O(N)
+        
