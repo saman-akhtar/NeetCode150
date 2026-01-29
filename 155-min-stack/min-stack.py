@@ -1,7 +1,14 @@
 class MinStack:
 
-# invariant: Design stack so that each opertaion 
-# retunr value as if it is actuall a stakc
+# Invariant:
+# For every index i, stack[i][1] is the minimum of stack[0..i] values.
+
+# Striucture stack - sWe carry forward min
+
+# No recomputation needed
+
+# O(1) getMin
+
     def __init__(self):
         self.stack = []
         
@@ -10,7 +17,7 @@ class MinStack:
         prev= None
         if self.stack:
             prev= self.stack[-1]
-        if prev and val >= prev[1]:
+        if prev is not None and val >= prev[1]:
             self.stack.append([val, prev[1]])
             
         else:    
@@ -41,7 +48,8 @@ class MinStack:
      
         return val
  
-
+# TC O(1)
+# SC O(N)
 # Your MinStack object will be instantiated and called as such:
 # obj = MinStack()
 # obj.push(val)
