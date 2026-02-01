@@ -1,31 +1,22 @@
+import operator
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
-        stack = []
-        for i in range(len(tokens)):
-            ch = tokens[i]
-            if ch in ['*','/','+','-']:
-                if len(stack) < 2:
-                    print("wrong operation")
-                    return None
-                op1 = int(stack.pop())
-                op2= int(stack.pop())
-                
-                    
-                if ch == '*':
-                    cal = op1 * op2
-                elif ch == '/':
 
-                    # note do truee divsion instead of float division
-                    cal = op2 / op1
-                elif ch == '+':
-                    cal = op1 + op2
-                elif ch == '-':
-                    cal = op2 - op1
-
-                stack.append(int(cal))
+        stack = [] 
+        i = 0
+        op = {
+        "+": operator.add,
+        "-": operator.sub,
+        "*": operator.mul,
+        "/": lambda a,b :int(a/b)  # or floordiv for LeetCode
+        }
+        res = ""
+        for token in tokens:
+            if token in op:
+                b = stack.pop()
+                a = stack.pop()
+                stack.append(op[token](a, b))
             else:
-                stack.append(ch)
-        if len(stack) > 1:
-            print("wrong operation")
-        else:
-            return int(stack.pop())
+                stack.append(int(token))
+
+        return stack[0]
