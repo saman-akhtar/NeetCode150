@@ -1,35 +1,45 @@
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
-
-        # MONOTONIC stack
-        # ie it keeps growing in 1 direction
         n = len(temperatures)
-        res = [0]* n
-        stack = [(temperatures[0], 0)]
-        for i in range (1, n):
-            
-            cur_temp = temperatures[i]
-            while  stack and temperatures[i] > stack[-1][0]:
-                old_temp, old_index = stack.pop()
-                res[old_index]= i - old_index
-            stack.append((temperatures[i], i))
-        return res
+        res = [0]*n
+        stack =[]
+        
+        for i in range(n-1, -1,-1):
+            t = temperatures[i]
+            # remove from stakc if not in expected way ie. previo temp < old temp
+            while stack and t  >= stack[-1][0]:
+                stack.pop()
+            if stack:
+                res[i]= stack[-1][1] -i 
+            # keep adding in stack 
+            stack.append((t,i))
 
+        return res     
 
-        # TC O(N)
-#          Time Complexity (TC) Analysis
-# Each temperature is processed once (loop iterates N times).
-# Each index is pushed onto the stack at most once (O(N)).
-# Each index is popped from the stack at most once (O(N)).
-# Thus, the worst-case scenario is that each element is pushed once and popped once, leading to:
+                #no bigger
+# TC O(N)
+# SC O(N)
+        # 0
+        # 0 76
+        # 1 72 76
+        # 1 69 72 76
+        # 2
+        # 30
+        # 40
+        # 50    50,1
+        # 60.  60,0`12
+        
+        
+        # 60
+        # 50 55,5
+        # 4. 5,1
+        # 5. 6,1
+        # 6. 55,2
+        # 6  55,1
+        # 55 80,1
+        # 80 80 0
 
-# O(N)
-
-        # SC O(N)
-#         Result array (res) → O(N) (stores answers for each day).
-# Monotonic stack (stack) → Worst case O(N) (if temperatures are strictly decreasing, all elements go on the stack).
-# Other auxiliary variables → O(1), which is negligible.
-# currentl storing O(2N) as storing tuples
-# we can also stor only index to make it O(N)
-
-        # 1 1 4 2 1 1 0 0
+        0
+        0
+        1
+        1
