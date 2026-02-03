@@ -10,6 +10,9 @@ class Solution:
 
         return len(stack)
         
+# TC O(nlogn)
+# SC ON
+
         #         2, 4,12,7,9
         # 2  4 1 1. 3
         # 1  1 12 7 3
