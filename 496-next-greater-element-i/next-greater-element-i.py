@@ -12,8 +12,8 @@ class Solution:
         # 1 2 3 1
         for n in nums2:
             while stack and n > stack[-1]:
-                prev = stack.pop()
-                nxt_great[prev]= n
+               
+                nxt_great[stack.pop()]= n
 
             stack.append(n)
     
