@@ -15,10 +15,9 @@ class Solution:
                 nxt_great[prev]= n
 
             stack.append(n)
-        res = []
-        for n in nums1:
-            res.append(nxt_great.get(n,-1))
-        return res
+    
+        return [nxt_great.get(n,-1) for n in nums1]
+       
 
 
 
