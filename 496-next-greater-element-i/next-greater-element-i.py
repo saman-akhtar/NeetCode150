@@ -15,7 +15,6 @@ class Solution:
                 nxt_great[prev]= n
 
             stack.append(n)
-        print(nxt_great)
         res = [-1]*len(nums1)
         for i,n in enumerate(nums1):
             if n in nxt_great:
