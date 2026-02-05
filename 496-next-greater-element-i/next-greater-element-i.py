@@ -1,7 +1,8 @@
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:    
+        # invarianrt: Stack stores a decreasing sequence of numbers whose next greater element is not yet found.
 
-        # MEthod 2 TC O(n) SC O(1)
+        # MEthod 2 TC O(n) SC O(n)
 
         # find global next > of all element in num2
         # create dict 0f  num2
@@ -18,7 +19,7 @@ class Solution:
     
         return [nxt_great.get(n,-1) for n in nums1]
        
-
+# SC = O(n) due to stack & dict
 
 
 
@@ -36,4 +37,4 @@ class Solution:
 
         return res
         # TC = O(n²).
-        # SC = O(1)
+        # SC = O(n) due to stack
