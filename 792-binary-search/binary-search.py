@@ -4,7 +4,6 @@ class Solution:
         h = len(nums) -1
         while l <= h:
             mid = (l + h)//2
-            print("mid",mid ,l ,h)
             if nums[mid] == target:
                 return mid
             elif nums[mid] < target:
