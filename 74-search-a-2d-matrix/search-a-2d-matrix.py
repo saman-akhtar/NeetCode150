@@ -9,7 +9,7 @@ class Solution:
             if target <= matrix[i][c-1]:
                 r1 = i
                 break
-        print("r1",r1)
+     
         while l <= h:
             mid = (l + h)//2
             print(l, h, mid)
@@ -23,3 +23,7 @@ class Solution:
              
         return False
 
+# O log(M *n)
+# O(1)
+
+# noe have a test case of base case ie. [[1]]
