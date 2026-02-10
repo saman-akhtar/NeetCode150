@@ -46,3 +46,6 @@ class Solution:
         
         # 6 7 1 2 3 4 5
         # 1
+
+        # tc O(logn)
+        # sc O(1)
