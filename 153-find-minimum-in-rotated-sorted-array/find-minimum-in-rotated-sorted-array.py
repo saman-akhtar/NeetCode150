@@ -1,30 +1,36 @@
 class Solution:
     def findMin(self, nums: List[int]) -> int:
+        min_res = float("inf")
+        l = 0
+        n = len(nums)
+        r = n-1
+        while l <= r:
+            print("li ",l,r)
+            print("val",nums[l],nums[r])
+            mid = (l + r)//2
+            min_res= min(min_res,nums[mid])
+            left_r = (nums[l], nums[mid-1])
+            l1 = mid +1
+            if  l1 >= n:
+                l1 = mid
 
 
-        l, r = 0, len(nums) - 1
-        
-        while l < r:
-            m = (l + r) // 2
-            
-            # If the middle element is greater than the rightmost element,
-            # the minimum is in the right half
-        # go to unsorted part
-            if nums[m] > nums[r]:
-                l = m + 1
+            right_r = (nums[l1], nums[r])
+
+            if left_r[0] < right_r[1] or left_r[1] < right_r[1] :
+            # if (right_r[0] < left_r[1] or right_r[1] < left_r[0]) and ( right_r[1] > left_r[1]):
+                r = mid -1
             else:
-                # We use r = m to include the middle element in our search range when there’s a possibility that it could be the minimum.
-                r = m
+                l = mid +1
+        return min_res
+
+
         
-        # The loop ends when l == r, which is the index of the smallest element
-        return nums[l]
-# Time Complexity: \U0001d442(log\U0001d45b)
-# O(logn), since we are using binary search.
-# Space Complexity: 
-# \U0001d442(1)
-# O(1), as we are using a constant amount of space.
 
+    # 7 8  9   10 11  13. 14. 15 0 1 2 3 4 5 6
 
-
-
-
+    # sorted
+    # 3 5 1 2   
+    # 5 2 6 8
+    # 4 8 9 1
+    #   2.6. 9 10
