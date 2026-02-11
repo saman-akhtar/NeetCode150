@@ -34,7 +34,8 @@ class Solution:
             return cur
             
             
-
+#. TC O(n + M)
+# SC O(1)
 
 
         
