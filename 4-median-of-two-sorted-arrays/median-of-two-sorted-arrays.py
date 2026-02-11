@@ -13,7 +13,6 @@ class Solution:
         j = 0
         
         len_r =-1
-        median = 0
         prev = 0
         cur = 0
     
