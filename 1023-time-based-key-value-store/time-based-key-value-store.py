@@ -1,39 +1,39 @@
 class TimeMap:
 
     def __init__(self):
-        self.timeMap = {}
+        self.dicts = defaultdict(list)
 
     def set(self, key: str, value: str, timestamp: int) -> None:
-        if key not in self.timeMap:
-            self.timeMap[key] = []
-        self.timeMap[key].append((timestamp, value))
+        self.dicts[key].append((timestamp,value))
         
 
     def get(self, key: str, timestamp: int) -> str:
-        res = self.timeMap.get(key, "")
-        if (res == "" or not res):
-            return res
-        if(len(res)  == 1 and res[0][0] <= timestamp):
-            return res[0][1]
+        if key not in self.dicts:
+            return ""
+        res = self.dicts[key]
+        
         l = 0
-        r = len(res)-1
-        result = ""
+        n = len(res)
+        r = n - 1
+        ans = ""
         while l <= r:
-            m = (l + r) //2
-            if( res[m][0] == timestamp ):
-                return res[m][1]
-            if timestamp > res[m][0]:
-                #more we move right , more max close value to timestam be assigned
-                result = res[m][1]
-                l = m + 1
+            m = (l + r)//2
+            
+            if (res[m][0] <= timestamp):
+                ans = res[m][1]
+                #current <= timestamp AND next > timestamp
+                l = m +1
+                
             else:
                 r = m -1
-        return result
-            
-        
+        return ans
 
-# TC 1) O(1) 2). O(1) 3) Ologn
-# SC      O(n)  
+        # return ""
+
+
+        
+        # if !
+        
 
 
 # Your TimeMap object will be instantiated and called as such:
