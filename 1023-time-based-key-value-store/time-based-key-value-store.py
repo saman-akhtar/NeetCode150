@@ -28,7 +28,8 @@ class TimeMap:
                 r = m -1
         return ans
 
-        # return ""
+        # TC O (logn)
+        # Sc O(1)
 
 
         
