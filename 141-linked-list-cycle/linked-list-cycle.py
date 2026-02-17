@@ -17,4 +17,5 @@ class Solution:
             slow = slow.next
             fast = fast.next.next
         return False
-        
+        # TC O(N)
+        # SC O(1)
