@@ -5,27 +5,22 @@
 #         self.next = next
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
-        head1 = list1
-        head2 = list2
         dummy = ListNode()
         head = dummy
-        while head1 and head2:
-            if head1.val < head2.val:
-                temp = head1.next
-                dummy.next = head1
-                head1 =  temp
-            else:
-                temp = head2.next
-                dummy.next = head2
-                head2 = temp 
-            dummy = dummy.next
-        
-        if head1:
-            dummy.next = head1
-        if head2:
-            dummy.next = head2
-        return head.next
-
-
-# TC O(n + m)
+        while list1 and list2 :
+            if list1.val < list2.val:
+                head.next = list1
+                list1 = list1.next 
+                
+            else :
+                head.next = list2
+                list2 = list2.next 
+            head = head.next
+        if list1:
+            head.next = list1
+        if list2:
+            head.next = list2
+        return dummy.next
+# TC O(N)
 # SC O(1)
+        
