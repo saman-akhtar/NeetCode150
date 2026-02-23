@@ -17,12 +17,20 @@ class Solution:
             cur = cur.next
             n -= 1
         if len(arr) == k:
-            arr[0].next = arr[k-1].next
+            # first point to last elemet
             first.next = arr[k-1]
-            # cur = 
-            first = arr[0]
+            arr[0].next = arr[k-1].next
+            
+            
             for i in range(k-1, 0,-1):
             
                 arr[i].next = arr[i-1]
+            first = arr[0]
+        else:
+            first.next =arr[0]
+
 
       return dummy.next  
+# 
+      # TC O(N)
+      # SC O(K)
