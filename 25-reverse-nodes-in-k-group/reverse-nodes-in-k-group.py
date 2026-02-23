@@ -4,37 +4,25 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
-       
-        def reverse(cur,  groupNext):
-            prev = None
-            while cur != groupNext:
-                nxt = cur.next
-                cur.next = prev
-                prev = cur
-                cur = nxt
-            return prev
-        
-        def getKth(node, k):
-            while node and k > 0:
-                node =node.next
-                k = k -1
-            return node
+    def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:        
+      dummy = ListNode()  
+     
+      cur = head
+      first = dummy
+      while cur:
+        n =k
+        arr = []
+        while cur and n > 0:
+            arr.append(cur)
+            cur = cur.next
+            n -= 1
+        if len(arr) == k:
+            arr[0].next = arr[k-1].next
+            first.next = arr[k-1]
+            # cur = 
+            first = arr[0]
+            for i in range(k-1, 0,-1):
+            
+                arr[i].next = arr[i-1]
 
-        dummy = ListNode(0, head)
-        groupPrev = dummy
-        while True:
-            kthNode = getKth(groupPrev, k)
-            if not kthNode:
-                break
-            groupNext = kthNode.next
-            cur = groupPrev.next
-            newHead = reverse(cur,  groupNext)
-
-            groupStart = groupPrev.next
-            groupPrev.next = newHead
-            groupStart.next = groupNext ## Connect the tail of the reversed group to the next group
-
-            # Move groupPrev to the end of the reversed group
-            groupPrev = groupStart
-        return dummy.next
+      return dummy.next  
