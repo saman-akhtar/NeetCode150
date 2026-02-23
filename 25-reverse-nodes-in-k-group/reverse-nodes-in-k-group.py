@@ -78,3 +78,11 @@ class Solution:
             cur = nxt
         return dummy.next
 
+#The real invariant here is:
+
+# first always points to the tail of the already processed list
+# group_start becomes the tail after reversal
+# cur always points to the first node of the next group
+
+#TC O(N)
+# SC O(1)
