@@ -4,33 +4,24 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        # Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
-        if not list:
-            return []
-        heap = []
-        dummy = ListNode() 
-        head = dummy
-        for node in lists:
-            if node:
-                heapq.heappush(heap, (node.val,id(node),node))
-        while heap:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:       
+        h = []
+        dummy = ListNode()
+        cur = dummy
+        for n in lists:
+                if n  :
+                    heappush(h,( n.val,id(n),n))
+        
+        while h:
             
-            if heap:
-                node_val, nodeid, node= heapq.heappop(heap)
-                nxt = node.next
-                head.next = ListNode(node_val)
-                head = head.next
-                node = nxt
-                if node:
-                    heapq.heappush(heap, ( node.val,id(node),node))
-                # heap.append(cur)
+           
+            val, _,min_node = heappop(h)
+            cur.next = min_node
+            cur = min_node
+            min_node = min_node.next
+            
+            if min_node:
+                
+                heappush(h,( min_node.val,id(min_node),min_node))
         return dummy.next
-#         Time Complexity: O(N log k)
-
-# Space Complexity: O(k)
         
