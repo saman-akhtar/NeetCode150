@@ -9,4 +9,5 @@ class Solution:
 
 
         return False
-        
+        # TC O(N)
+        # SC O(N)
