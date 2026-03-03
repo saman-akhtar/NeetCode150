@@ -11,4 +11,5 @@ class Solution:
         lh = self.maxDepth(root.left)
         rh = self.maxDepth(root.right)
         return 1 + max(lh,rh)
-        
+       # TC O(N)
+       # SC O(N) -stack 
