@@ -20,4 +20,6 @@ class Solution:
         return res[0]
 
     # TC O(N)
-    # SC O(n)
+    # SC O(h)
+#     Space complexity is O(H) where H is the height of the tree.
+# In the worst case (skewed tree) H = N, and in a balanced tree H = log N.
