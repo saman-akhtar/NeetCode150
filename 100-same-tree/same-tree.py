@@ -14,7 +14,6 @@ class Solution:
             return False
         lh = self.isSameTree(p.left,q.left)
         rh = self.isSameTree(p.right,q.right)
-        if not lh or not rh:
-            return False
-        return True
+        
+        return lh and rh
         
