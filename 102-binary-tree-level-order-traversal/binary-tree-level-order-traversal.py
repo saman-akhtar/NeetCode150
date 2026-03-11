@@ -6,26 +6,32 @@
 #         self.right = right
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        if not root:
-            return []
         q = deque([root])
-        res = []
+        result = []
         while q:
-            n = len(q)
-            cur_res = []
-            for i in range(n):
+            qlen = len(q)
+           
+            res = []
+            for i in range(qlen):
                 node = q.popleft()
                 if node:
-                    cur_res.append(node.val)
+                    res.append(node.val)
                     q.append(node.left)
                     q.append(node.right)
-            if cur_res:
-                res.append(cur_res)
-        return res
-       
+            if res:
+                result.append(res)
 
+        return result
 
-                    
-        
-# TC  O (N)
-# SC O (N)
+#         Time complexity: 
+# O
+# (
+# n
+# )
+# O(n)
+# Space complexity: 
+# O
+# (
+# n
+# )
+# O(n)
