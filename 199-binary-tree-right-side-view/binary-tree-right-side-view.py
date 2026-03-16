@@ -9,16 +9,19 @@ class Solution:
         q = deque([root])
         res = []
         while q:
-            r = None
+            
             for i in range(len(q)):
                 node = q.popleft()
                 
                 if node:
-                    if r is  None:
-                        r = node.val
-                    
-                    q.append(node.right)
-                    q.append(node.left)
-            if r is not None:
-                res.append(r)
+                    if i == 0:
+                        res.append(node.val)
+                    if node.right:
+                        q.append(node.right)
+                    if node.left:
+                        q.append(node.left)
+           
         return res 
+# TC O(n)
+#SC O(n)
+      #  BFS, the queue can hold up to O(n/2) nodes in the worst case → space complexity = O(n).
