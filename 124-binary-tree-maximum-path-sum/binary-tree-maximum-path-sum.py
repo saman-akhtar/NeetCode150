@@ -6,21 +6,27 @@
 #         self.right = right
 class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
-        max_path = float('-inf')
+        self.path = float("-inf")
         def dfs(root):
-            nonlocal max_path
             if not root:
                 return 0
-            
-            left_path = max(dfs(root.left),0)
-            right_path = max(dfs(root.right),0)
-            cur_path = root.val  + left_path + right_path
-            max_path = max(max_path, cur_path )
-            return root.val + max(left_path, right_path) # there can only be 1 split.. alreay sploting at parent so return eoth left path or righ pathd
+            lft = max(0, dfs(root.left))
+            right =max(0, dfs(root.right))
+            self.path = max(self.path, root.val + lft + right)
+            return (root.val + max(lft, right))
         dfs(root)
-        return max_path
-        
+        return self.path
 
-# TC O(N)
-# SC O(N) , O(logN) best case
-        
+
+# update global path: left + node + right
+# return to parent: node + max(left, right)
+        # Visit each node once.
+
+# TC O(n)
+
+# Space
+
+# Recursion stack.
+
+# Balanced tree → O(log n)
+# Worst case → O(n)
