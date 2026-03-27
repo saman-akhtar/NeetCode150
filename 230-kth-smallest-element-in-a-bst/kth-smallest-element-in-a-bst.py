@@ -6,18 +6,43 @@
 #         self.right = right
 class Solution:
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        res= []
+        # res= []
+        # def dfs(root):
+        #     nonlocal res
+        #     if not root:
+        #         return None
+        #     dfs(root.left)
+        #     if len(res)== k:
+        #         return res
+        #     res.append(root.val)
+        #     if len(res)== k:
+        #         return res
+        #     dfs(root.right)
+        # dfs(root)
+        # return res[-1]
+        
+
+        # TC O(N)
+        # TC av is O(K)
+        # SC O(K +H) => k +  O(N)worst , k + O(logn)best
+
+
+        #so optimized in SC & clean appro
+        # TC O(N)
+        # SCO(h)
+        self.count = 0
+        self.ans = None
         def dfs(root):
-            nonlocal res
-            if not root:
-                return None
+            # if aleary foun ans stop recursing
+            if not root or self.ans is not None:
+                return
+
             dfs(root.left)
-            if len(res)== k:
-                return res
-            res.append(root.val)
-            if len(res)== k:
-                return res
+            self.count += 1
+            if self.count == k:
+                self.ans = root.val
+                return
             dfs(root.right)
         dfs(root)
-        return res[-1]
-        
+        return self.ans
+            
