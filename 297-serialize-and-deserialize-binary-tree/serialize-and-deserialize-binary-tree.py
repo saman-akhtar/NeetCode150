@@ -66,8 +66,16 @@ class Codec:
         
         return root
         
-        
+#         | Function    | Time Complexity | Space Complexity |
+# | ----------- | --------------- | ---------------- |
+# | serialize   | O(n)            | O(n)             |
+# | deserialize | O(n)            | O(n)             |
 
+        
+# O(n) TC''
+
+# SC Every element in arr is visited exactly once → O(n)
+# Each element may create a TreeNode → O(1) per node
 # Your Codec object will be instantiated and called as such:
 # ser = Codec()
 # deser = Codec()
