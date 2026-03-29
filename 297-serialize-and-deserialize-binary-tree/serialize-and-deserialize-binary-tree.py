@@ -27,7 +27,7 @@ class Codec:
                     q.append(node.right)
                 else:
                     arr.append("null")
-        print("Arr",arr)
+
 
         return ",".join(map(str, arr))
                 
